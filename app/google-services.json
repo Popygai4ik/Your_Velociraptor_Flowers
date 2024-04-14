@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "942605514682",
+    "project_id": "your-velociraptor-flowers",
+    "storage_bucket": "your-velociraptor-flowers.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:942605514682:android:97bf4df0435748dcd70f83",
+        "android_client_info": {
+          "package_name": "com.example.yourvelociraptorflowers"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDXOWz3MqzmW4b12MSvVGJlcCMWcw1vFpc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

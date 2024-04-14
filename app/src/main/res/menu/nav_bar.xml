@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/vse_tvti"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:icon="@drawable/free_icon_potted_plant_5313640"
+        android:title="ВСЕ ЦВЕТЫ" />
+    <item
+        android:id="@+id/moi_tvti"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:title="МОИ ЦВЕТЫ"
+        android:icon="@drawable/free_icon_tulips_2541917"/>
+</menu>
