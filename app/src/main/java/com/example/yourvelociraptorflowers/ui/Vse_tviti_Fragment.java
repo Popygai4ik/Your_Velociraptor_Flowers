@@ -1,5 +1,6 @@
 package com.example.yourvelociraptorflowers.ui;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -38,6 +39,11 @@ public class Vse_tviti_Fragment extends Fragment {
         adapter = new PlantsAdapter();
         binding.recycler.setLayoutManager(new LinearLayoutManager(requireContext()));
         binding.recycler.setAdapter(adapter);
+        binding.profileButton.setOnClickListener(v -> {
+            Intent intent = new Intent(requireContext(), User_profil.class);
+            startActivity(intent);
+        });
+
 
         // Отображаем ProgressBar при начале загрузки данных
         binding.progressBar.setVisibility(View.VISIBLE);

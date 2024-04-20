@@ -11,61 +11,57 @@
         android:layout_height="?attr/actionBarSize"
         android:orientation="horizontal"
         android:background="?android:attr/colorPrimary">
+
         <TextView
             android:id="@+id/title"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            android:layout_marginLeft="15dp"
-            android:gravity="center"
+            android:layout_weight="1"
+            android:layout_marginStart="16dp"
+            android:layout_gravity="center"
             android:text="Все цветы"
             android:textSize="20sp"
             android:textColor="@android:color/black"/>
 
         <!-- Кнопка поиска -->
         <ImageButton
-            android:layout_marginLeft="110dp"
             android:id="@+id/searchButton"
             android:layout_width="50dp"
             android:layout_height="match_parent"
-            android:scaleType="centerCrop"
-
             android:src="@drawable/poisk_flower_7387574"
             android:background="?android:attr/selectableItemBackground"
-            android:padding="12dp"/>
+            android:padding="12dp"
+            android:scaleType="fitCenter"/>
 
         <!-- Профиль -->
-
-        <!-- Уведомления -->
         <ImageButton
-            android:layout_marginLeft="10dp"
-            android:id="@+id/notificationButton"
-            android:layout_width="50dp"
-            android:scaleType="centerCrop"
-            android:layout_height="match_parent"
-            android:src="@drawable/icon_notification_3239952"
-            android:background="?android:attr/selectableItemBackground"
-            android:padding="12dp"/>
-        <ImageButton
-            android:layout_marginLeft="10dp"
-
             android:id="@+id/profileButton"
             android:layout_width="50dp"
-            android:scaleType="centerCrop"
             android:layout_height="match_parent"
             android:src="@drawable/icon_user_profile_2734847"
             android:background="?android:attr/selectableItemBackground"
-            android:padding="12dp"/>
+            android:padding="12dp"
+            android:scaleType="fitCenter"/>
+
+        <!-- Уведомления -->
+        <ImageButton
+            android:id="@+id/notificationButton"
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:src="@drawable/icon_notification_3239952"
+            android:background="?android:attr/selectableItemBackground"
+            android:padding="12dp"
+            android:scaleType="fitCenter"/>
 
     </LinearLayout>
+
 
     <!-- Прогресс-бар загрузки -->
     <ProgressBar
         android:id="@+id/progressBar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:visibility="gone"/>
+        android:layout_centerInParent="true" />
 
     <!-- RecyclerView для отображения данных -->
     <androidx.recyclerview.widget.RecyclerView

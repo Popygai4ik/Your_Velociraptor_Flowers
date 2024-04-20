@@ -22,6 +22,17 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".ui.Login_activity"
+            android:label="Login Activity">
+        </activity>
+        <activity
+            android:name=".ui.User_profil"
+            android:label="User Profile">
+        </activity>
+        <activity
+            android:name=".ui.Register_activity"
+            android:label="Register Activity" />
     </application>
 
 </manifest>
