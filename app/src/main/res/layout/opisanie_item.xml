@@ -1,0 +1,155 @@
+<com.google.android.material.card.MaterialCardView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="16dp"
+    android:layout_marginVertical="6dp"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <ImageView
+
+            android:layout_marginTop="10dp"
+            android:id="@+id/imageView_opisanie"
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/econka_prilogenie_round" />
+
+        <TextView
+
+            android:id="@+id/textView_opisanie"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TextView"
+
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/imageView_opisanie"
+            app:layout_constraintTop_toTopOf="@+id/imageView_opisanie" />
+
+        <TextView
+            android:id="@+id/textView_temp"
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+
+            android:layout_weight="1"
+            android:text="Температурные условия:"
+            android:textColor="@android:color/holo_green_dark"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/imageView_temp"
+            app:layout_constraintTop_toBottomOf="@+id/imageView_opisanie" />
+
+        <ImageView
+            android:id="@+id/imageView_temp"
+
+            android:layout_marginTop="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/econka_prilogenie_round"
+            app:layout_constraintTop_toBottomOf="@+id/imageView_opisanie" />
+
+        <TextView
+            android:id="@+id/textView_temp_inf"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TextView"
+
+            android:layout_marginTop="10dp"
+            android:textSize="17sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/imageView_temp"
+            app:layout_constraintTop_toBottomOf="@+id/textView_temp" />
+
+        <ImageView
+            android:id="@+id/imageView_vlag"
+            android:layout_marginTop="10dp"
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/econka_prilogenie_round"
+            app:layout_constraintTop_toBottomOf="@+id/imageView_temp" />
+
+        <TextView
+            android:id="@+id/textView_vlagn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:text="Условия влажности:"
+            android:textColor="@android:color/holo_green_dark"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/imageView_vlag"
+            app:layout_constraintTop_toBottomOf="@+id/imageView_temp" />
+
+        <TextView
+            android:id="@+id/textViewvlaginf"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TextView"
+
+            android:layout_marginTop="10dp"
+            android:textSize="17sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/imageView_vlag"
+            app:layout_constraintTop_toBottomOf="@+id/textView_vlagn" />
+        <ImageView
+            android:id="@+id/imageView_varch"
+            android:layout_marginTop="10dp"
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/econka_prilogenie_round"
+            app:layout_constraintTop_toBottomOf="@+id/imageView_vlag" />
+
+        <TextView
+            android:id="@+id/textView_varch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:text="Условия выращивания:"
+            android:textColor="@android:color/holo_green_dark"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/imageView_varch"
+            app:layout_constraintTop_toTopOf="@+id/imageView_varch" />
+
+        <TextView
+            android:id="@+id/imageView_varch_inf"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TextView"
+
+            android:layout_marginTop="10dp"
+            android:textSize="17sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/imageView_vlag"
+            app:layout_constraintTop_toBottomOf="@+id/textView_varch" />
+
+        <Button
+            android:id="@+id/button_utube"
+
+            android:layout_marginTop="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Больше информации"
+            android:layout_marginBottom="10dp"
+
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView_varch" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</com.google.android.material.card.MaterialCardView>

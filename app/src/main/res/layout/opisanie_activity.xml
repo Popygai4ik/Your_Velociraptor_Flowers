@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <!-- Навигационный бар сверху -->
+    <LinearLayout
+        android:id="@+id/navigationBar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:orientation="horizontal"
+
+        android:background="?android:attr/colorPrimary">
+        <ImageButton
+            android:id="@+id/backButton"
+            android:layout_width="49dp"
+            android:background="?android:attr/selectableItemBackground"
+            android:layout_height="50dp"
+            android:padding="12dp"
+            android:layout_marginStart="16dp"
+            android:layout_gravity="center"
+            android:scaleType="fitCenter"
+            android:src="@drawable/free_icon_back_arrow_594564"
+/>
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginStart="16dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="Все цветы"
+            android:textSize="20sp"
+            tools:text="JOPAAAAA"
+
+            android:textColor="@android:color/black"/>
+        <ImageButton
+            android:id="@+id/addButton"
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:src="@drawable/add"
+            android:background="?android:attr/selectableItemBackground"
+            android:padding="12dp"
+            android:scaleType="fitCenter"/>
+
+        <!-- Профиль -->
+        <ImageButton
+            android:id="@+id/infoButton"
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:src="@drawable/free_icon_details_11284802"
+            android:background="?android:attr/selectableItemBackground"
+            android:padding="12dp"
+            android:scaleType="fitCenter"/>
+
+
+
+    </LinearLayout>
+
+
+    <!-- Прогресс-бар загрузки -->
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:visibility="gone"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/navigationBar">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <ImageView
+                android:padding="10dp"
+                android:layout_margin="10dp"
+                android:layout_marginTop="10dp"
+                android:id="@+id/imageView_opisanie"
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/econka_prilogenie_round" />
+
+            <TextView
+
+                android:id="@+id/textView_opisanie"
+                android:layout_height="wrap_content"
+                android:text="TextView"
+                android:layout_margin="10dp"
+                android:layout_width="0dp"
+                android:textSize="17sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/imageView_opisanie"
+                app:layout_constraintTop_toTopOf="@+id/imageView_opisanie" />
+
+            <TextView
+                android:id="@+id/textView_temp"
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:text="Температурные условия:"
+                android:textColor="@android:color/holo_green_dark"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/imageView_temp"
+                app:layout_constraintTop_toBottomOf="@+id/textView_opisanie" />
+
+            <ImageView
+                android:id="@+id/imageView_temp"
+
+                android:padding="10dp"
+                android:layout_margin="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/econka_prilogenie_round"
+                app:layout_constraintTop_toBottomOf="@+id/imageView_opisanie" />
+
+            <TextView
+                android:id="@+id/textView_temp_inf"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="TextView"
+                android:layout_margin="10dp"
+                android:textSize="17sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/imageView_temp"
+                app:layout_constraintTop_toBottomOf="@+id/textView_temp" />
+
+            <ImageView
+                android:id="@+id/imageView_vlag"
+                android:layout_marginTop="10dp"
+
+                android:padding="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/econka_prilogenie_round"
+                app:layout_constraintTop_toBottomOf="@+id/imageView_temp" />
+
+            <TextView
+                android:id="@+id/textView_vlagn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:layout_margin="10dp"
+                android:text="Условия влажности:"
+                android:textColor="@android:color/holo_green_dark"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/imageView_vlag"
+                app:layout_constraintTop_toBottomOf="@+id/textView_temp_inf" />
+
+            <TextView
+                android:id="@+id/textViewvlaginf"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="TextView"
+                android:layout_margin="10dp"
+                android:textSize="17sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/imageView_vlag"
+                app:layout_constraintTop_toBottomOf="@+id/textView_vlagn" />
+            <ImageView
+                android:id="@+id/imageView_varch"
+                android:layout_marginTop="10dp"
+
+                android:padding="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/econka_prilogenie_round"
+                app:layout_constraintTop_toBottomOf="@+id/imageView_vlag" />
+
+            <TextView
+                android:id="@+id/textView_varch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:layout_margin="10dp"
+                android:text="Условия выращивания:"
+                android:textColor="@android:color/holo_green_dark"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/imageView_varch"
+                app:layout_constraintTop_toBottomOf="@+id/textViewvlaginf" />
+
+            <TextView
+                android:id="@+id/imageView_varch_inf"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="TextView"
+                android:layout_margin="10dp"
+                android:textSize="17sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/imageView_vlag"
+                app:layout_constraintTop_toBottomOf="@+id/textView_varch" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+
+</RelativeLayout>

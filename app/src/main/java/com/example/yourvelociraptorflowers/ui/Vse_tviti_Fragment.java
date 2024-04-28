@@ -39,9 +39,15 @@ public class Vse_tviti_Fragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         FirebaseFirestore firestore = FirebaseFirestore.getInstance();
-//        Plants newUser1 = new Plants("Примулина", "Примулина - род растений семейства Геснериевых, включающий около 100 видов.",
-//                "https://rastenievod.com/wp-content/uploads/2017/03/1-36-700x690.jpg");
-//        firestore.collection("plants")
+//        Plants newUser1 = new Plants("Джункус (Ситник)", "Ситник - необычное и требовательное растение, нуждающееся в большом количестве влаги.",
+//                "https://rastenievod.com/wp-content/uploads/2017/03/1-37-700x633.jpg",
+//                "https://rastenievod.com/wp-content/uploads/2017/03/6-15-700x561.jpg",
+//                "https://rastenievod.com/wp-content/uploads/2017/03/7-12-700x819.jpg",
+//                "https://rastenievod.com/wp-content/uploads/2017/03/10-10-700x525.jpg",
+//                "Ситник нуждается в тепле, оптимальная температура для роста составляет более 24 градусов.",
+//                "Растение требует высокой влажности воздуха и регулярного увлажнения из опрыскивателя.",
+//                "Для выращивания ситника в комнатных условиях необходимо создать почти болотные условия. Растение любит свет, но нуждается в рассеянном освещении и защите от прямых солнечных лучей.");
+////        firestore.collection("plants")
 //                .document()
 //                .set(newUser1);
 //        Plants newUser2 = new Plants("Фикус бенджамина", "Фикус бенджамина - популярное декоративное растение с блестящими листьями.",

@@ -33,6 +33,9 @@
         <activity
             android:name=".ui.Register_activity"
             android:label="Register Activity" />
+        <activity
+            android:name=".ui.OpisanieActivity"
+            android:label="Opisanie Activity" />
     </application>
 
 </manifest>
