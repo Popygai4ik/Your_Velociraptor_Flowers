@@ -42,29 +42,30 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-
+            tools:text="JOPAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/avatarCard"
             app:layout_constraintTop_toBottomOf="@id/opisanie"
-            tools:text="exampleemail@name.com" />
+             />
 
         <Button
             android:id="@+id/moreButton"
             android:layout_width="wrap_content"
+
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
             android:text="Подробнее"
-            app:layout_constraintBottom_toBottomOf="@+id/addButton"
-            app:layout_constraintStart_toStartOf="@+id/avatarCard"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/addButton" />
 
         <Button
+            android:layout_margin="10dp"
             android:id="@+id/addButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
+            android:layout_marginStart="10dp"
             android:text="Добавить"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/moreButton"
             app:layout_constraintTop_toBottomOf="@+id/name" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
