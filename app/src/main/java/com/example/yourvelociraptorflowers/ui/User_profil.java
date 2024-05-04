@@ -110,6 +110,7 @@ public class User_profil extends AppCompatActivity {
             binding.logoutButton.setVisibility(View.GONE);
             binding.loginButton.setVisibility(View.VISIBLE);
             binding.registerButton.setVisibility(View.VISIBLE);
+            binding.avatarCard.setVisibility(View.GONE);
             binding.loginButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

@@ -14,6 +14,8 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.util.ArrayList;
+
 public class Register_activity extends AppCompatActivity {
 
     private RegisterActivityBinding binding;
@@ -110,7 +112,8 @@ public class Register_activity extends AppCompatActivity {
         FirebaseAuth.getInstance().createUserWithEmailAndPassword(email, password)
                 .addOnSuccessListener(authResult -> {
                     FirebaseFirestore firestore = FirebaseFirestore.getInstance();
-                    User newUser = new User(authResult.getUser().getUid(),authResult.getUser().getUid(), ime, email, password, vozrst);
+                    ArrayList<String> moisFlowers = new ArrayList<>();
+                    User newUser = new User(authResult.getUser().getUid(),authResult.getUser().getUid(), ime, email, password, vozrst, moisFlowers);
                     firestore.collection("users")
                             .document(authResult.getUser().getUid())
                             .set(newUser);

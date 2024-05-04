@@ -2,6 +2,8 @@ package com.example.yourvelociraptorflowers.model;
 
 import com.google.firebase.firestore.DocumentId;
 
+import java.util.ArrayList;
+
 public class User {
     private String userId;
     public String uid;
@@ -10,17 +12,19 @@ public class User {
     public String password;
     public Boolean vozrst;
 
+    public ArrayList<String> moisFlowers;
     public User() {
 
     }
 
-    public User(String userId, String uid, String name, String email, String password, Boolean vozrst) {
+    public User(String userId, String uid, String name, String email, String password, Boolean vozrst, ArrayList<String> moisFlowers) {
         this.vozrst = vozrst;
         this.userId = userId;
         this.uid = uid;
         this.name = name;
         this.email = email;
         this.password = password;
+        this.moisFlowers = moisFlowers;
     }
 
     public String getUid() {
@@ -61,5 +65,17 @@ public class User {
 
     public void setUserId(String userId) {
         this.userId = userId;
+    }
+    public Boolean getVozrst() {
+        return vozrst;
+    }
+    public void setVozrst(Boolean vozrst) {
+        this.vozrst = vozrst;
+    }
+    public ArrayList<String> getMoisFlowers() {
+        return moisFlowers;
+    }
+    public void setMoisFlowers(ArrayList<String> moisFlowers) {
+        this.moisFlowers = moisFlowers;
     }
 }

@@ -12,6 +12,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.bumptech.glide.Glide;
 import com.example.yourvelociraptorflowers.R;
 import com.example.yourvelociraptorflowers.databinding.OpisanieActivityBinding;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.ArrayList;
+import java.util.HashMap;
 
 public class OpisanieActivity extends AppCompatActivity {
 
@@ -30,6 +36,7 @@ public class OpisanieActivity extends AppCompatActivity {
 
 
         // Получаем данные из интента
+        String Id = getIntent().getStringExtra("Id");
         String opisanie = getIntent().getStringExtra("opisanie");
         String name = getIntent().getStringExtra("name");
         String temp = getIntent().getStringExtra("temp");
@@ -66,6 +73,75 @@ public class OpisanieActivity extends AppCompatActivity {
                 .load(resinok4)
                 .placeholder(R.mipmap.ic_launcher)
                 .into(binding.imageViewVarch);
+        binding.addButton.setOnClickListener(v -> {
+            FirebaseAuth mAuth = FirebaseAuth.getInstance();
+            FirebaseUser currentUser = mAuth.getCurrentUser();
+
+            if (currentUser != null) {
+                FirebaseFirestore firestore = FirebaseFirestore.getInstance();
+
+                // Создаем новый элемент для добавления в список
+                String id = getIntent().getStringExtra("Id");
+
+                // Получаем текущий список из Firestore
+                firestore.collection("users")
+                        .document(currentUser.getUid())
+                        .get()
+                        .addOnSuccessListener(documentSnapshot -> {
+                            // Проверяем, есть ли уже список moisFlowers
+                            if (documentSnapshot.contains("moisFlowers")) {
+                                ArrayList<String> moisFlowers = (ArrayList<String>) documentSnapshot.get("moisFlowers");
+                                if (moisFlowers.contains(id)) {
+                                    // Если элемент уже есть в списке, выдаем сообщение об ошибке
+                                    Toast.makeText(this, "Цветок уже добавлен", Toast.LENGTH_SHORT).show();
+                                    return;
+                                }
+                                // Добавляем новый элемент в список
+                                moisFlowers.add(id);
+
+                                // Создаем карту для обновления данных пользователя
+                                HashMap<String, Object> updateMap = new HashMap<>();
+                                updateMap.put("moisFlowers", moisFlowers);
+
+                                // Обновляем документ в Firestore
+                                firestore.collection("users")
+                                        .document(currentUser.getUid())
+                                        .update(updateMap)
+                                        .addOnSuccessListener(unused -> {
+                                            Toast.makeText(this, "Цветок добавлен", Toast.LENGTH_SHORT).show();
+                                        })
+                                        .addOnFailureListener(e -> {
+                                            Toast.makeText(this, "Ошибка", Toast.LENGTH_SHORT).show();
+                                        });
+                            } else {
+                                // Если список еще не существует, создаем новый список с новым элементом
+                                ArrayList<String> moisFlowers = new ArrayList<>();
+                                moisFlowers.add(id);
+
+                                // Создаем карту для обновления данных пользователя
+                                HashMap<String, Object> updateMap = new HashMap<>();
+                                updateMap.put("moisFlowers", moisFlowers);
+
+                                // Обновляем документ в Firestore
+                                firestore.collection("users")
+                                        .document(currentUser.getUid())
+                                        .set(updateMap)
+                                        .addOnSuccessListener(unused -> {
+                                            Toast.makeText(this, "Цветок добавлен", Toast.LENGTH_SHORT).show();
+                                        })
+                                        .addOnFailureListener(e -> {
+                                            Toast.makeText(this, "Ошибка", Toast.LENGTH_SHORT).show();
+                                        });
+                            }
+                        })
+                        .addOnFailureListener(e -> {
+                            Toast.makeText(this, "Ошибка получения данных", Toast.LENGTH_SHORT).show();
+                        });
+            } else {
+                // Пользователь не вошел, выводим сообщение
+                Toast.makeText(this, "Войдите, чтобы добавить цветок", Toast.LENGTH_SHORT).show();
+            }
+        });
         binding.infoButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
