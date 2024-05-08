@@ -89,6 +89,10 @@ public class Vse_tviti_Fragment extends Fragment {
             Intent intent = new Intent(requireContext(), User_profil.class);
             startActivity(intent);
         });
+        binding.searchButton.setOnClickListener(v -> {
+            Intent intent = new Intent(requireContext(), Search_activiti.class);
+            startActivity(intent);
+        });
 
 
         // Отображаем ProgressBar при начале загрузки данных

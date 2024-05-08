@@ -36,6 +36,9 @@
         <activity
             android:name=".ui.OpisanieActivity"
             android:label="Opisanie Activity" />
+        <activity android:name=".ui.Search_activiti"
+            android:label="Search_activiti"/>
+
     </application>
 
 </manifest>

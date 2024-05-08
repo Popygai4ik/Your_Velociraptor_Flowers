@@ -80,13 +80,13 @@ public class PlantsViewHolderMoi extends ViewHolder {
                                                 .document(currentUser.getUid())
                                                 .update(updateMap)
                                                 .addOnSuccessListener(unused -> {
-                                                    Toast.makeText(itemView.getContext(), "Элемент удален", Toast.LENGTH_SHORT).show();
+                                                    Toast.makeText(itemView.getContext(), "Цветок удален", Toast.LENGTH_SHORT).show();
                                                 })
                                                 .addOnFailureListener(e -> {
-                                                    Toast.makeText(itemView.getContext(), "Ошибка при удалении элемента", Toast.LENGTH_SHORT).show();
+                                                    Toast.makeText(itemView.getContext(), "Ошибка при удалении цветка", Toast.LENGTH_SHORT).show();
                                                 });
                                     } else {
-                                        Toast.makeText(itemView.getContext(), "Элемент уже удален", Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(itemView.getContext(), "Цветок уже удален", Toast.LENGTH_SHORT).show();
                                     }
                                 }
                             })

@@ -44,4 +44,5 @@ public class PlantsAdapter extends Adapter<PlantsViewHolder> {
     }
 
 
+
 }

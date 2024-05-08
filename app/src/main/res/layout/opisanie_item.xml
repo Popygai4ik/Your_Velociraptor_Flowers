@@ -17,8 +17,8 @@
             android:layout_marginTop="10dp"
             android:id="@+id/imageView_opisanie"
 
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
             android:src="@mipmap/econka_prilogenie_round" />
 
         <TextView
@@ -52,8 +52,8 @@
             android:id="@+id/imageView_temp"
 
             android:layout_marginTop="10dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
             android:src="@mipmap/econka_prilogenie_round"
             app:layout_constraintTop_toBottomOf="@+id/imageView_opisanie" />
 
@@ -73,10 +73,16 @@
             android:id="@+id/imageView_vlag"
             android:layout_marginTop="10dp"
 
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
             android:src="@mipmap/econka_prilogenie_round"
             app:layout_constraintTop_toBottomOf="@+id/imageView_temp" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="" />
 
         <TextView
             android:id="@+id/textView_vlagn"
@@ -106,8 +112,9 @@
             android:id="@+id/imageView_varch"
             android:layout_marginTop="10dp"
 
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+
+            android:layout_width="100dp"
+            android:layout_height="100dp"
             android:src="@mipmap/econka_prilogenie_round"
             app:layout_constraintTop_toBottomOf="@+id/imageView_vlag" />
 

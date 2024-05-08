@@ -11,6 +11,9 @@ import android.widget.Toast;
 import com.example.yourvelociraptorflowers.databinding.ActivityMainBinding;
 import com.example.yourvelociraptorflowers.R;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 public class MainActivity extends AppCompatActivity {
     private ActivityMainBinding binding;
@@ -20,9 +23,31 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+        FirebaseAuth mAuth = FirebaseAuth.getInstance();
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        if (currentUser != null) {
+            // Пользователь залогинен
+            FirebaseFirestore firestore = FirebaseFirestore.getInstance();
+            firestore.collection("users").document(currentUser.getUid())
+                    .get()
+                    .addOnCompleteListener(task -> {
+                        if (task.isSuccessful()) {
+                            DocumentSnapshot document = task.getResult();
+                            if (document.exists()) {
+                                String userName = document.getString("name");
+                                if (userName != null) {
+                                    Toast.makeText(this, "Добро пожаловать, " + userName, Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                        }
+                    });
+        } else {
+            // Пользователь не залогинен
+            Toast.makeText(this, "Добро пожаловать, новый пользователь!", Toast.LENGTH_SHORT).show();
+        }
+
         replaceFragment(new Vse_tviti_Fragment());
-        String uid = FirebaseAuth.getInstance().getUid();
-        Toast.makeText(this, "Login: " + uid, Toast.LENGTH_SHORT).show();
+
         binding.BottomNavigationView.setOnItemSelectedListener(item -> {
             int itemId = item.getItemId();
             if (itemId == R.id.vse_tvti) {
