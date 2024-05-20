@@ -99,7 +99,7 @@ public class Moi_tviti_Fragment extends Fragment {
                                                 // Формат для преобразования даты в строку
 
                                                 for (Long dateInt : nextWateringDates) {
-                                                    // Преобразуем Integer в Date
+
                                                     Date date = new Date(dateInt); // умножаем на 1000 для преобразования в миллисекунды
                                                     // Форматируем дату и добавляем в массив
                                                     formattedDates.add(sdf.format(date));
