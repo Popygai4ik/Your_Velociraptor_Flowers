@@ -38,6 +38,8 @@
             android:label="Opisanie Activity" />
         <activity android:name=".ui.Search_activiti"
             android:label="Search_activiti"/>
+        <activity android:name=".ui.Add_new_plant"
+            android:label="Add_new_plant"/>
 
     </application>
 

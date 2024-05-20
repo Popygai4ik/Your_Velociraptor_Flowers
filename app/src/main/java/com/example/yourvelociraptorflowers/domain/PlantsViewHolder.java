@@ -2,7 +2,11 @@ package com.example.yourvelociraptorflowers.domain;
 
 import static androidx.core.content.ContextCompat.startActivity;
 
+import android.app.DatePickerDialog;
+import android.app.TimePickerDialog;
 import android.content.Intent;
+import android.widget.DatePicker;
+import android.widget.TimePicker;
 import android.widget.Toast;
 
 import androidx.recyclerview.widget.RecyclerView.ViewHolder;
@@ -17,7 +21,10 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class PlantsViewHolder extends ViewHolder {
 
@@ -51,6 +58,8 @@ public class PlantsViewHolder extends ViewHolder {
             intent.putExtra("resinok3", item.getResinok3());
             intent.putExtra("resinok4", item.getResinok4());
             intent.putExtra("opisanie5", item.getOpisanie5());
+            intent.putExtra("koofesiant_poliva", item.getKoofesiant_poliva());
+
            itemView.getContext().startActivity(intent);
         });
         binding.addButton.setOnClickListener(v -> {
@@ -61,7 +70,7 @@ public class PlantsViewHolder extends ViewHolder {
                 FirebaseFirestore firestore = FirebaseFirestore.getInstance();
 
                 // Создаем новый элемент для добавления в список
-                String newElement = item.getId();
+                String newElementId = item.getId();
 
                 // Получаем текущий список из Firestore
                 firestore.collection("users")
@@ -69,50 +78,82 @@ public class PlantsViewHolder extends ViewHolder {
                         .get()
                         .addOnSuccessListener(documentSnapshot -> {
                             // Проверяем, есть ли уже список moisFlowers
+                            ArrayList<Map<String, Object>> moisFlowers = new ArrayList<>();
                             if (documentSnapshot.contains("moisFlowers")) {
-                                ArrayList<String> moisFlowers = (ArrayList<String>) documentSnapshot.get("moisFlowers");
-                                if (moisFlowers.contains(newElement)) {
+                                List<?> moisFlowersRaw = (List<?>) documentSnapshot.get("moisFlowers");
+                                for (Object rawItem : moisFlowersRaw) {
+                                    if (rawItem instanceof Map) {
+                                        moisFlowers.add((Map<String, Object>) rawItem);
+                                    }
+                                }
+                            }
+
+                            // Проверяем, есть ли уже элемент в списке
+                            for (Map<String, Object> plantMap : moisFlowers) {
+                                if (plantMap.get("id").equals(newElementId)) {
                                     // Если элемент уже есть в списке, выдаем сообщение об ошибке
                                     Toast.makeText(itemView.getContext(), "Цветок уже добавлен", Toast.LENGTH_SHORT).show();
                                     return;
                                 }
-                                // Добавляем новый элемент в список
-                                moisFlowers.add(newElement);
-
-                                // Создаем карту для обновления данных пользователя
-                                HashMap<String, Object> updateMap = new HashMap<>();
-                                updateMap.put("moisFlowers", moisFlowers);
-
-                                // Обновляем документ в Firestore
-                                firestore.collection("users")
-                                        .document(currentUser.getUid())
-                                        .update(updateMap)
-                                        .addOnSuccessListener(unused -> {
-                                            Toast.makeText(itemView.getContext(), "Добавлено", Toast.LENGTH_SHORT).show();
-                                        })
-                                        .addOnFailureListener(e -> {
-                                            Toast.makeText(itemView.getContext(), "Не добавлено", Toast.LENGTH_SHORT).show();
-                                        });
-                            } else {
-                                // Если список еще не существует, создаем новый список с новым элементом
-                                ArrayList<String> moisFlowers = new ArrayList<>();
-                                moisFlowers.add(newElement);
-
-                                // Создаем карту для обновления данных пользователя
-                                HashMap<String, Object> updateMap = new HashMap<>();
-                                updateMap.put("moisFlowers", moisFlowers);
-
-                                // Обновляем документ в Firestore
-                                firestore.collection("users")
-                                        .document(currentUser.getUid())
-                                        .set(updateMap)
-                                        .addOnSuccessListener(unused -> {
-                                            Toast.makeText(itemView.getContext(), "Добавлено", Toast.LENGTH_SHORT).show();
-                                        })
-                                        .addOnFailureListener(e -> {
-                                            Toast.makeText(itemView.getContext(), "Не добавлено", Toast.LENGTH_SHORT).show();
-                                        });
                             }
+                            Toast.makeText(itemView.getContext(), "Выберете дату и время последнего полива!", Toast.LENGTH_SHORT).show();
+
+                            // Открываем DatePickerDialog для выбора даты
+                            Calendar calendar = Calendar.getInstance();
+                            DatePickerDialog datePickerDialog = new DatePickerDialog(itemView.getContext(),
+                                    (DatePicker view, int year, int month, int dayOfMonth) -> {
+                                        calendar.set(Calendar.YEAR, year);
+                                        calendar.set(Calendar.MONTH, month);
+                                        calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+
+                                        // Открываем TimePickerDialog для выбора времени
+                                        TimePickerDialog timePickerDialog = new TimePickerDialog(itemView.getContext(),
+                                                (TimePicker timeView, int hourOfDay, int minute) -> {
+                                                    calendar.set(Calendar.HOUR_OF_DAY, hourOfDay);
+                                                    calendar.set(Calendar.MINUTE, minute);
+
+                                                    // Создаем карту с новым элементом и временем последнего полива
+                                                    Map<String, Object> newElementMap = new HashMap<>();
+                                                    newElementMap.put("id", newElementId);
+                                                    newElementMap.put("lastWatered", calendar.getTimeInMillis());
+                                                    int koofesiant_poliva = item.getKoofesiant_poliva(); // Замените это значение на нужное вам
+
+                                                    // Вычисляем даты следующих поливов и добавляем их в ArrayList
+                                                    ArrayList<Long> nextWateringDates = new ArrayList<>();
+                                                    Calendar nextWateringCalendar = (Calendar) calendar.clone();
+                                                    for (int i = 1; i <= 10; i++) { // Например, добавим 10 следующих поливов
+                                                        nextWateringCalendar.add(Calendar.DAY_OF_YEAR, koofesiant_poliva);
+                                                        nextWateringDates.add(nextWateringCalendar.getTimeInMillis());
+                                                    }
+                                                    newElementMap.put("nextWateringDates", nextWateringDates);
+
+                                                    // Добавляем новый элемент в список
+                                                    moisFlowers.add(newElementMap);
+
+                                                    // Создаем карту для обновления данных пользователя
+                                                    Map<String, Object> updateMap = new HashMap<>();
+                                                    updateMap.put("moisFlowers", moisFlowers);
+
+                                                    // Обновляем документ в Firestore
+                                                    firestore.collection("users")
+                                                            .document(currentUser.getUid())
+                                                            .update(updateMap)
+                                                            .addOnSuccessListener(unused -> {
+                                                                Toast.makeText(itemView.getContext(), "Добавлено", Toast.LENGTH_SHORT).show();
+                                                            })
+                                                            .addOnFailureListener(e -> {
+                                                                Toast.makeText(itemView.getContext(), "Не добавлено", Toast.LENGTH_SHORT).show();
+                                                            });
+                                                },
+                                                calendar.get(Calendar.HOUR_OF_DAY),
+                                                calendar.get(Calendar.MINUTE),
+                                                true);
+                                        timePickerDialog.show();
+                                    },
+                                    calendar.get(Calendar.YEAR),
+                                    calendar.get(Calendar.MONTH),
+                                    calendar.get(Calendar.DAY_OF_MONTH));
+                            datePickerDialog.show();
                         })
                         .addOnFailureListener(e -> {
                             Toast.makeText(itemView.getContext(), "Ошибка получения данных", Toast.LENGTH_SHORT).show();

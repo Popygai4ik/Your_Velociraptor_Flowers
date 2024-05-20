@@ -22,6 +22,7 @@ public class PlantsAdapterMoi extends Adapter<PlantsViewHolderMoi> {
         ItemMoiBinding binding = ItemMoiBinding.inflate(inflater, parent, false);
         return new PlantsViewHolderMoi(binding);
     }
+
     @Override
     public void onBindViewHolder(@NonNull PlantsViewHolderMoi holder, int position) {
         holder.bind(plants.get(position));
@@ -33,6 +34,7 @@ public class PlantsAdapterMoi extends Adapter<PlantsViewHolderMoi> {
     public void setItems(List<Plants> plants) {
         int itemCount = getItemCount();
         this.plants = new ArrayList<>(plants);
+        notifyDataSetChanged();
         notifyItemRangeChanged(0, Math.max(itemCount, getItemCount()));
     }
 }

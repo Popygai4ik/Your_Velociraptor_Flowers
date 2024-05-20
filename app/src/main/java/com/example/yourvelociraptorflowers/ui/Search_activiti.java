@@ -2,8 +2,10 @@ package com.example.yourvelociraptorflowers.ui;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
@@ -50,6 +52,18 @@ public class Search_activiti extends AppCompatActivity {
                     // Отображаем RecyclerView с данными
                     binding.recycler.setVisibility(View.VISIBLE);
                     binding.searchButton.setOnClickListener(onSearchButtonClick());
+                    binding.searchEditText.setOnEditorActionListener((TextView v, int actionId, KeyEvent event) -> {
+                        if (actionId == EditorInfo.IME_ACTION_SEARCH || actionId == EditorInfo.IME_ACTION_DONE) {
+                            performSearch();
+                            return true;
+                        } else if (event != null && event.getAction() == KeyEvent.ACTION_DOWN && event.getKeyCode() == KeyEvent.KEYCODE_ENTER) {
+                            if (event.getAction() == KeyEvent.ACTION_DOWN) {
+                                performSearch();
+                                return true;
+                            }
+                        }
+                        return false;
+                    });
                 })
                 .addOnFailureListener(e -> {
                     Toast.makeText(this, "Ошибка", Toast.LENGTH_SHORT).show();
@@ -61,27 +75,26 @@ public class Search_activiti extends AppCompatActivity {
     }
 
     private View.OnClickListener onSearchButtonClick() {
-        return v -> {
-            String searchText = binding.searchEditText.getText().toString().trim().toLowerCase();
-            List<Plants> filteredPlants = new ArrayList<>();
-            for (Plants plant : allPlants) {
-                if (plant.getName().toLowerCase().contains(searchText)) {
-                    filteredPlants.add(plant);
-                }
-            }
-
-            if (filteredPlants.isEmpty()) {
-                // Если результаты не найдены, показываем сообщение
-                adapter.setItems(allPlants);
-                Toast.makeText(Search_activiti.this, "Растения не найдены", Toast.LENGTH_SHORT).show();
-
-            } else {
-                // Если найдены результаты, обновляем адаптер для RecyclerView
-                adapter.setItems(filteredPlants);
-                adapter.notifyDataSetChanged();
-
-            }
-        };
+        return v -> performSearch();
     }
 
+    private void performSearch() {
+        String searchText = binding.searchEditText.getText().toString().trim().toLowerCase();
+        List<Plants> filteredPlants = new ArrayList<>();
+        for (Plants plant : allPlants) {
+            if (plant.getName().toLowerCase().contains(searchText)) {
+                filteredPlants.add(plant);
+            }
+        }
+
+        if (filteredPlants.isEmpty()) {
+            // Если результаты не найдены, показываем сообщение
+            adapter.setItems(allPlants);
+            Toast.makeText(Search_activiti.this, "Растения не найдены", Toast.LENGTH_SHORT).show();
+        } else {
+            // Если найдены результаты, обновляем адаптер для RecyclerView
+            adapter.setItems(filteredPlants);
+            adapter.notifyDataSetChanged();
+        }
+    }
 }

@@ -2,6 +2,9 @@ package com.example.yourvelociraptorflowers.model;
 
 
 import com.google.firebase.firestore.DocumentId;
+
+import java.util.ArrayList;
+
 public class Plants {
 
     // Аннотация позволяет записать в поле класса имя документа
@@ -18,8 +21,12 @@ public class Plants {
     private String resinok3;
     private String resinok4;
     private String opisanie5;
+    private String lastWateredFormatted;
+    private Integer koofesiant_poliva;
+    private ArrayList <String> lastWatered;
 
-    public Plants(String name, String opisanie, String resinok,  String resinok2, String resinok3, String resinok4, String opisanie2, String opisanie3, String opisanie4, String opisanie5) {
+
+    public Plants(String name, String opisanie, String resinok,  String resinok2, String resinok3, String resinok4, String opisanie2, String opisanie3, String opisanie4, String opisanie5, Integer koofesiant_poliva) {
         this.setName(name);
         this.setOpisanie(opisanie);
         this.setResinok(resinok);
@@ -30,6 +37,8 @@ public class Plants {
         this.setResinok3(resinok3);
         this.setResinok4(resinok4);
         this.setOpisanie5(opisanie5);
+        this.setKoofesiant_poliva(koofesiant_poliva);
+
 
     }
     public Plants() {
@@ -120,5 +129,29 @@ public class Plants {
 
     public void setOpisanie5(String opisanie5) {
         this.opisanie5 = opisanie5;
+    }
+
+    public void setLastWateredFormatted(String lastWateredFormatted) {
+        this.lastWateredFormatted = lastWateredFormatted;
+    }
+
+    public String getLastWateredFormatted() {
+        return lastWateredFormatted;
+    }
+
+    public Integer getKoofesiant_poliva() {
+        return koofesiant_poliva;
+    }
+
+    public void setKoofesiant_poliva(Integer koofesiant_poliva) {
+        this.koofesiant_poliva = koofesiant_poliva;
+    }
+
+    public ArrayList<String> getLastWatered() {
+        return lastWatered;
+    }
+
+    public void setLastWatered(ArrayList<String> lastWatered) {
+        this.lastWatered = lastWatered;
     }
 }

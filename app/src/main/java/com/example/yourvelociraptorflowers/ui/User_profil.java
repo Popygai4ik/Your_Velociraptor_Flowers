@@ -37,6 +37,7 @@ public class User_profil extends AppCompatActivity {
         int randomIndex = random.nextInt(stringList_bol_18.size());
         binding = ActivityProvileBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+        binding.addButton.setVisibility(View.GONE);
         FirebaseAuth mAuth = FirebaseAuth.getInstance();
         binding.backButton.setOnClickListener(v -> {
             onBackPressed();
@@ -55,6 +56,19 @@ public class User_profil extends AppCompatActivity {
                                 if (userName != null) {
                                     binding.profileName.setVisibility(View.VISIBLE);
                                     binding.profileName.setText(userName);
+                                    firestore.collection("users").document("admin").get().addOnCompleteListener(
+                                            task1 -> {
+                                                if (task1.isSuccessful()) {
+                                                    DocumentSnapshot document1 = task1.getResult();
+                                                    if (document1.exists()) {
+                                                        ArrayList<String> admins = (ArrayList<String>) document1.get("admins");
+                                                        if (admins != null && admins.contains(currentUser.getUid())) {
+                                                            binding.addButton.setVisibility(View.VISIBLE);
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                    );
                                     boolean vozrst = document.getBoolean("vozrst");
                                     if (vozrst){
                                         Glide.with(this)
@@ -78,6 +92,13 @@ public class User_profil extends AppCompatActivity {
                             Toast.makeText(this, "get failed with", Toast.LENGTH_SHORT).show();
                         }
                     });
+            binding.addButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(User_profil.this, Add_new_plant.class);
+                    startActivity(intent);
+                }
+            });
             String email = currentUser.getEmail();
             binding.profileEmail.setText(email);
             binding.profileEmail.setVisibility(View.VISIBLE);

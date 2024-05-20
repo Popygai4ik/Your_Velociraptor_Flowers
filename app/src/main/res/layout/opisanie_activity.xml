@@ -3,7 +3,8 @@
     android:layout_width="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:gbp="http://schemas.android.com/apk/res-auto">
 
     <!-- Навигационный бар сверху -->
     <LinearLayout
@@ -62,12 +63,21 @@
 
 
     <!-- Прогресс-бар загрузки -->
-    <ProgressBar
+<!--    <ProgressBar-->
+<!--        android:id="@+id/progressBar"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_centerInParent="true"-->
+<!--        android:visibility="gone"/>-->
+    <com.jpardogo.android.googleprogressbar.library.GoogleProgressBar
         android:id="@+id/progressBar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_margin="10dp"
         android:layout_centerInParent="true"
-        android:visibility="gone"/>
+        android:visibility="invisible"
+        android:layout_centerHorizontal="true"
+        gbp:type="chrome_floating_circles"/>
 
     <ScrollView
         android:layout_width="match_parent"
@@ -81,14 +91,14 @@
             android:orientation="vertical">
 
             <ImageView
-                android:padding="10dp"
-                android:layout_margin="10dp"
-                android:layout_marginTop="10dp"
                 android:id="@+id/imageView_opisanie"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
 
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@mipmap/econka_prilogenie_round" />
+                android:layout_margin="10dp"
+                android:padding="10dp"
+                android:src="@mipmap/econka_prilogenie_round"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
 
@@ -123,8 +133,8 @@
                 android:padding="10dp"
                 android:layout_margin="10dp"
                 android:layout_marginTop="10dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
                 android:src="@mipmap/econka_prilogenie_round"
                 app:layout_constraintTop_toBottomOf="@+id/imageView_opisanie" />
 
@@ -144,8 +154,8 @@
                 android:layout_marginTop="10dp"
 
                 android:padding="10dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
                 android:src="@mipmap/econka_prilogenie_round"
                 app:layout_constraintTop_toBottomOf="@+id/imageView_temp" />
 
@@ -178,8 +188,8 @@
                 android:layout_marginTop="10dp"
 
                 android:padding="10dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
                 android:src="@mipmap/econka_prilogenie_round"
                 app:layout_constraintTop_toBottomOf="@+id/imageView_vlag" />
 

@@ -21,32 +21,40 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
+import java.util.Map;
 
 public class Moi_tviti_Fragment extends Fragment {
     private PlantsAdapterMoi adapter;
     private FragmentMoiTvitiBinding binding;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         binding = FragmentMoiTvitiBinding.inflate(inflater, container, false);
         return binding.getRoot();
     }
+
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
         binding.profileButton.setOnClickListener(v -> {
             Intent intent = new Intent(requireContext(), User_profil.class);
             startActivity(intent);
         });
 
+        binding.searchButton.setOnClickListener(v -> {
+            Intent intent = new Intent(requireContext(), Search_activiti.class);
+            startActivity(intent);
+        });
+
         FirebaseAuth mAuth = FirebaseAuth.getInstance();
 
-        // Проверяем, авторизован ли пользователь
         if (mAuth.getCurrentUser() != null) {
-            // Если пользователь авторизован, отображаем контент
-
-            // Отображаем ProgressBar до загрузки данных
             binding.progressBar.setVisibility(View.VISIBLE);
             binding.imageView.setVisibility(View.GONE);
             binding.textView.setVisibility(View.GONE);
@@ -59,7 +67,6 @@ public class Moi_tviti_Fragment extends Fragment {
 
             binding.textView2.setVisibility(View.GONE);
 
-            // Получаем список цветов из Firestore
             DocumentReference userRef = firestore.collection("users").document(mAuth.getCurrentUser().getUid());
             userRef.addSnapshotListener((documentSnapshot, e) -> {
                 if (e != null) {
@@ -68,18 +75,46 @@ public class Moi_tviti_Fragment extends Fragment {
                 }
 
                 if (documentSnapshot != null && documentSnapshot.exists()) {
-                    List<String> moisFlowers = (List<String>) documentSnapshot.get("moisFlowers");
+                    List<Map<String, Object>> moisFlowers = (List<Map<String, Object>>) documentSnapshot.get("moisFlowers");
 
-                    // Получаем данные из коллекции "plants"
                     firestore.collection("plants")
                             .get()
                             .addOnSuccessListener(queryDocumentSnapshots -> {
                                 List<Plants> plants = new ArrayList<>();
+                                SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy HH:mm", Locale.getDefault());
                                 for (QueryDocumentSnapshot document : queryDocumentSnapshots) {
                                     Plants plant = document.toObject(Plants.class);
-                                    // Проверяем, содержится ли идентификатор растения в списке
-                                    if (moisFlowers != null && moisFlowers.contains(plant.getId())) {
-                                        plants.add(plant);
+                                    if (moisFlowers != null) {
+                                        for (Map<String, Object> moisFlower : moisFlowers) {
+                                            String id = (String) moisFlower.get("id");
+                                            if (id.equals(plant.getId())) {
+                                                long lastWateredTimestamp = (long) moisFlower.get("lastWatered");
+                                                String lastWateredFormatted = sdf.format(new Date(lastWateredTimestamp));
+                                                plant.setLastWateredFormatted(lastWateredFormatted);
+                                                ArrayList<Long> nextWateringDates = (ArrayList<Long>) moisFlower.get("nextWateringDates");
+
+                                                // Массив для хранения строковых представлений дат
+                                                ArrayList<String> formattedDates = new ArrayList<>();
+
+                                                // Формат для преобразования даты в строку
+
+                                                for (Long dateInt : nextWateringDates) {
+                                                    // Преобразуем Integer в Date
+                                                    Date date = new Date(dateInt); // умножаем на 1000 для преобразования в миллисекунды
+                                                    // Форматируем дату и добавляем в массив
+                                                    formattedDates.add(sdf.format(date));
+                                                }
+
+                                                // Пример вывода результатов
+                                                for (String formattedDate : formattedDates) {
+                                                    System.out.println(formattedDate);
+                                                }
+
+                                                // Теперь можно использовать массив строк для других нужд
+                                                plant.setLastWatered(formattedDates);
+                                                plants.add(plant);
+                                            }
+                                        }
                                     }
                                 }
                                 if (plants.isEmpty()) {
@@ -87,17 +122,12 @@ public class Moi_tviti_Fragment extends Fragment {
                                 } else {
                                     binding.textView2.setVisibility(View.GONE);
                                 }
-                                // Устанавливаем данные в адаптер
                                 adapter.setItems(plants);
-                                // Скрываем ProgressBar после загрузки данных
                                 binding.progressBar.setVisibility(View.GONE);
-                                // Отображаем RecyclerView с данными
                                 binding.recycler.setVisibility(View.VISIBLE);
                             })
                             .addOnFailureListener(e1 -> {
                                 Log.e("Firestore", "Error getting documents.", e1);
-                                // Добавьте здесь обработку ошибки, например, вывод сообщения об ошибке пользователю
-                                // Скрываем ProgressBar в случае ошибки
                                 binding.progressBar.setVisibility(View.GONE);
                             });
                 } else {
@@ -105,7 +135,6 @@ public class Moi_tviti_Fragment extends Fragment {
                 }
             });
         } else {
-            // Если пользователь не авторизован, скрываем содержимое и показываем сообщение
             binding.recycler.setVisibility(View.GONE);
             binding.progressBar.setVisibility(View.GONE);
             binding.imageView.setVisibility(View.VISIBLE);
@@ -116,9 +145,6 @@ public class Moi_tviti_Fragment extends Fragment {
                 Intent intent = new Intent(requireContext(), User_profil.class);
                 startActivity(intent);
             });
-            // Показать сообщение о том, что пользователь не авторизован
-            // Можно также добавить кнопку для перехода на экран регистрации или входа
         }
-
-
-    }}
+    }
+}
