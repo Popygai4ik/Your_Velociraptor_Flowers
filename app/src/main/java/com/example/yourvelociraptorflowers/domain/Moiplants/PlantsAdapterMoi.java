@@ -1,4 +1,5 @@
-package com.example.yourvelociraptorflowers.domain;
+package com.example.yourvelociraptorflowers.domain.Moiplants;
+
 
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
@@ -6,43 +7,34 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView.Adapter;
 
-import com.example.yourvelociraptorflowers.databinding.ItemVseBinding;
+import com.example.yourvelociraptorflowers.databinding.ItemMoiBinding;
 import com.example.yourvelociraptorflowers.model.Plants;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class PlantsAdapter extends Adapter<PlantsViewHolder> {
-
+public class PlantsAdapterMoi extends Adapter<PlantsViewHolderMoi> {
     private List<Plants> plants = new ArrayList<>();
-
-
-
     @NonNull
     @Override
-    public PlantsViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public PlantsViewHolderMoi onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-        ItemVseBinding binding = ItemVseBinding.inflate(inflater, parent, false);
-        return new PlantsViewHolder(binding);
+        ItemMoiBinding binding = ItemMoiBinding.inflate(inflater, parent, false);
+        return new PlantsViewHolderMoi(binding);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull PlantsViewHolder holder, int position) {
-        Plants plant = plants.get(position);
-        holder.bind(plant);
+    public void onBindViewHolder(@NonNull PlantsViewHolderMoi holder, int position) {
+        holder.bind(plants.get(position));
     }
-
     @Override
     public int getItemCount() {
         return plants.size();
     }
-
     public void setItems(List<Plants> plants) {
         int itemCount = getItemCount();
         this.plants = new ArrayList<>(plants);
+        notifyDataSetChanged();
         notifyItemRangeChanged(0, Math.max(itemCount, getItemCount()));
     }
-
-
-
 }

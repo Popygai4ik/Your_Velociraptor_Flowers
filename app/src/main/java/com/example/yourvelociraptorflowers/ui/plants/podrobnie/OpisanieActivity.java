@@ -1,4 +1,4 @@
-package com.example.yourvelociraptorflowers.ui;
+package com.example.yourvelociraptorflowers.ui.plants.podrobnie;
 
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;

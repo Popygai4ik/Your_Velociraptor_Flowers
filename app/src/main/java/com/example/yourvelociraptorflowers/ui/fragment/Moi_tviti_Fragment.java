@@ -1,4 +1,4 @@
-package com.example.yourvelociraptorflowers.ui;
+package com.example.yourvelociraptorflowers.ui.fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,8 +14,11 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.yourvelociraptorflowers.databinding.FragmentMoiTvitiBinding;
-import com.example.yourvelociraptorflowers.domain.PlantsAdapterMoi;
+import com.example.yourvelociraptorflowers.domain.Moiplants.PlantsAdapterMoi;
 import com.example.yourvelociraptorflowers.model.Plants;
+import com.example.yourvelociraptorflowers.ui.notifications.NotificationsActivity;
+import com.example.yourvelociraptorflowers.ui.plants.search.Search_activiti;
+import com.example.yourvelociraptorflowers.ui.user.prosmotr.User_profil;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -49,6 +52,10 @@ public class Moi_tviti_Fragment extends Fragment {
 
         binding.searchButton.setOnClickListener(v -> {
             Intent intent = new Intent(requireContext(), Search_activiti.class);
+            startActivity(intent);
+        });
+        binding.notificationButton.setOnClickListener(v -> {
+            Intent intent = new Intent(requireContext(), NotificationsActivity.class);
             startActivity(intent);
         });
 
@@ -115,8 +122,48 @@ public class Moi_tviti_Fragment extends Fragment {
                                                 plants.add(plant);
                                             }
                                         }
+
+//                                        NotificationChannel channel = null;
+//                                        if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+//                                            channel = new NotificationChannel("my_channel_for_poliv", "My Channel poliv", NotificationManager.IMPORTANCE_LOW);
+//                                            channel.setSound(null, null); // Отключение звука для канала
+//                                        }
+//                                        if (isAdded()) {
+//                                            NotificationManager notificationManager = (NotificationManager) requireContext().getSystemService(Context.NOTIFICATION_SERVICE);
+//                                            // Остальной код
+//                                                                                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+//                                            notificationManager.createNotificationChannel(channel);
+//                                        }
+//
+//                                        ArrayList<String> notificationLines = new ArrayList<>();
+//                                        for (Plants plant1 : plants) {
+//                                            notificationLines.add(plant1.getName() + " - " + getNextWateringDate(plant1.getLastWateredFormatted(), plant1.getKoofesiant_poliva()));
+//                                        }
+//
+//                                        if (notificationLines.size() > 0) {
+//                                            StringBuilder notificationText = new StringBuilder();
+//                                            for (String line : notificationLines) {
+//                                                notificationText.append(line).append("\n");
+//                                            }
+//
+//                                            Notification notification1 = new NotificationCompat.Builder(requireContext(), "my_channel_for_poliv")
+//                                                    .setSmallIcon(R.mipmap.ic_notification)
+//                                                    .setContentTitle("\uD83D\uDCA7 Вам нужно поливать:")
+//                                                    .setStyle(new NotificationCompat.BigTextStyle().bigText(notificationText.toString()))
+//                                                    .setOngoing(true)  // делает уведомление неотключаемым
+//                                                    .setSound(null)    // отключение звука для уведомления
+//                                                    .build();
+//
+//                                            notification1.flags |= Notification.FLAG_NO_CLEAR;  // делает уведомление неотключаемым
+//
+//                                            notificationManager.notify(1, notification1);
+//                                        }}
+
+
                                     }
-                                }
+
+                                    }
+
                                 if (plants.isEmpty()) {
                                     binding.textView2.setVisibility(View.VISIBLE);
                                 } else {

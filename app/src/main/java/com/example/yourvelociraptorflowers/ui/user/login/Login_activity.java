@@ -1,4 +1,4 @@
-package com.example.yourvelociraptorflowers.ui;
+package com.example.yourvelociraptorflowers.ui.user.login;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,6 +8,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.yourvelociraptorflowers.databinding.ActivityCustomBinding;
+import com.example.yourvelociraptorflowers.ui.MainActivity;
 import com.google.firebase.Firebase;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthUserCollisionException;

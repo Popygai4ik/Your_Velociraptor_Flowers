@@ -1,4 +1,4 @@
-package com.example.yourvelociraptorflowers.ui;
+package com.example.yourvelociraptorflowers.ui.user.registration;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.yourvelociraptorflowers.databinding.RegisterActivityBinding;
 import com.example.yourvelociraptorflowers.model.User;
+import com.example.yourvelociraptorflowers.ui.MainActivity;
 import com.google.firebase.Firebase;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthUserCollisionException;
@@ -113,7 +114,8 @@ public class Register_activity extends AppCompatActivity {
                 .addOnSuccessListener(authResult -> {
                     FirebaseFirestore firestore = FirebaseFirestore.getInstance();
                     ArrayList<String> moisFlowers = new ArrayList<>();
-                    User newUser = new User(authResult.getUser().getUid(),authResult.getUser().getUid(), ime, email, password, vozrst, moisFlowers);
+                    ArrayList<String> notifications = new ArrayList<>();
+                    User newUser = new User(authResult.getUser().getUid(),authResult.getUser().getUid(), ime, email, password, vozrst, moisFlowers, notifications);
                     firestore.collection("users")
                             .document(authResult.getUser().getUid())
                             .set(newUser);

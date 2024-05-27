@@ -1,4 +1,4 @@
-package com.example.yourvelociraptorflowers.ui;
+package com.example.yourvelociraptorflowers.ui.user.prosmotr;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,6 +11,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.bumptech.glide.Glide;
 import com.example.yourvelociraptorflowers.R;
 import com.example.yourvelociraptorflowers.databinding.ActivityProvileBinding;
+import com.example.yourvelociraptorflowers.ui.addnewplants.Add_new_plant;
+import com.example.yourvelociraptorflowers.ui.user.login.Login_activity;
+import com.example.yourvelociraptorflowers.ui.user.registration.Register_activity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentSnapshot;

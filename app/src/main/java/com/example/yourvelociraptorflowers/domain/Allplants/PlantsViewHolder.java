@@ -1,6 +1,4 @@
-package com.example.yourvelociraptorflowers.domain;
-
-import static androidx.core.content.ContextCompat.startActivity;
+package com.example.yourvelociraptorflowers.domain.Allplants;
 
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
@@ -15,7 +13,7 @@ import com.bumptech.glide.Glide;
 import com.example.yourvelociraptorflowers.R;
 import com.example.yourvelociraptorflowers.databinding.ItemVseBinding;
 import com.example.yourvelociraptorflowers.model.Plants;
-import com.example.yourvelociraptorflowers.ui.OpisanieActivity;
+import com.example.yourvelociraptorflowers.ui.plants.podrobnie.OpisanieActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -121,10 +119,10 @@ public class PlantsViewHolder extends ViewHolder {
                                                     // Вычисляем даты следующих поливов и добавляем их в ArrayList
                                                     ArrayList<Long> nextWateringDates = new ArrayList<>();
                                                     Calendar nextWateringCalendar = (Calendar) calendar.clone();
-                                                    for (int i = 1; i <= 10; i++) { // Например, добавим 10 следующих поливов
-                                                        nextWateringCalendar.add(Calendar.DAY_OF_YEAR, koofesiant_poliva);
-                                                        nextWateringDates.add(nextWateringCalendar.getTimeInMillis());
-                                                    }
+//                                                    for (int i = 1; i <= 10; i++) { // Например, добавим 10 следующих поливов
+//                                                        nextWateringCalendar.add(Calendar.DAY_OF_YEAR, koofesiant_poliva);
+//                                                        nextWateringDates.add(nextWateringCalendar.getTimeInMillis());
+//                                                    }
                                                     newElementMap.put("nextWateringDates", nextWateringDates);
 
                                                     // Добавляем новый элемент в список
@@ -139,10 +137,10 @@ public class PlantsViewHolder extends ViewHolder {
                                                             .document(currentUser.getUid())
                                                             .update(updateMap)
                                                             .addOnSuccessListener(unused -> {
-                                                                Toast.makeText(itemView.getContext(), "Добавлено", Toast.LENGTH_SHORT).show();
+                                                                Toast.makeText(itemView.getContext(), "Цветок добавлен", Toast.LENGTH_SHORT).show();
                                                             })
                                                             .addOnFailureListener(e -> {
-                                                                Toast.makeText(itemView.getContext(), "Не добавлено", Toast.LENGTH_SHORT).show();
+                                                                Toast.makeText(itemView.getContext(), "Цветок не добавлен", Toast.LENGTH_SHORT).show();
                                                             });
                                                 },
                                                 calendar.get(Calendar.HOUR_OF_DAY),

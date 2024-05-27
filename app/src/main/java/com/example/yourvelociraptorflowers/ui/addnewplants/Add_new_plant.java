@@ -1,4 +1,4 @@
-package com.example.yourvelociraptorflowers.ui;
+package com.example.yourvelociraptorflowers.ui.addnewplants;
 
 import android.os.Bundle;
 import android.view.View;

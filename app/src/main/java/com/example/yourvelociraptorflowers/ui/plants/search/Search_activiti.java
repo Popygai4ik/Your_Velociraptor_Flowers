@@ -1,4 +1,4 @@
-package com.example.yourvelociraptorflowers.ui;
+package com.example.yourvelociraptorflowers.ui.plants.search;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -13,7 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.example.yourvelociraptorflowers.databinding.SearchActivitiBinding;
-import com.example.yourvelociraptorflowers.domain.PlantsAdapter;
+import com.example.yourvelociraptorflowers.domain.Allplants.PlantsAdapter;
 import com.example.yourvelociraptorflowers.model.Plants;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;

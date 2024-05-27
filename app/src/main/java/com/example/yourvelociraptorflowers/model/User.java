@@ -13,11 +13,12 @@ public class User {
     public Boolean vozrst;
 
     public ArrayList<String> moisFlowers;
+    public ArrayList<String> notifications;
     public User() {
 
     }
 
-    public User(String userId, String uid, String name, String email, String password, Boolean vozrst, ArrayList<String> moisFlowers) {
+    public User(String userId, String uid, String name, String email, String password, Boolean vozrst, ArrayList<String> moisFlowers, ArrayList<String> notifications) {
         this.vozrst = vozrst;
         this.userId = userId;
         this.uid = uid;
@@ -25,6 +26,14 @@ public class User {
         this.email = email;
         this.password = password;
         this.moisFlowers = moisFlowers;
+        this.notifications = notifications;
+    }
+
+    public ArrayList<String> getNotifications() {
+        return notifications;
+    }
+    public void setNotifications(ArrayList<String> notifications) {
+        this.notifications = notifications;
     }
 
     public String getUid() {

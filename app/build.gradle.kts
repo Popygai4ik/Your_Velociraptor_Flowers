@@ -36,6 +36,8 @@ android {
 }
 
 dependencies {
+    implementation("androidx.work:work-runtime-ktx:2.7.1")
+
     implementation("com.jpardogo.googleprogressbar:library:1.2.0")
     implementation(platform("com.google.firebase:firebase-bom:32.8.1"))
     implementation("androidx.appcompat:appcompat:1.6.1")
