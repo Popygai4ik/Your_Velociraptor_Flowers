@@ -11,7 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.bumptech.glide.Glide;
 import com.example.yourvelociraptorflowers.R;
 import com.example.yourvelociraptorflowers.databinding.ActivityProvileBinding;
-import com.example.yourvelociraptorflowers.ui.addnewplants.Add_new_plant;
+import com.example.yourvelociraptorflowers.ui.addnewplants.adminadd.Add_new_plant;
 import com.example.yourvelociraptorflowers.ui.user.login.Login_activity;
 import com.example.yourvelociraptorflowers.ui.user.registration.Register_activity;
 import com.example.yourvelociraptorflowers.ui.user.support.SupportActivityNezaregan;

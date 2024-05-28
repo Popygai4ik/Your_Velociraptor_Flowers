@@ -8,11 +8,9 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.yourvelociraptorflowers.databinding.RegisterActivityBinding;
-import com.example.yourvelociraptorflowers.model.User;
+import com.example.yourvelociraptorflowers.model.user.User;
 import com.example.yourvelociraptorflowers.ui.MainActivity;
-import com.google.firebase.Firebase;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
@@ -119,7 +117,7 @@ public class Register_activity extends AppCompatActivity {
                     firestore.collection("users")
                             .document(authResult.getUser().getUid())
                             .set(newUser);
-                    Toast.makeText(this, "Login success: " + authResult.getUser().getUid(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, "Вы успешно зарегистрировались!", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(this, MainActivity.class);
                     startActivity(intent);
                     finish();

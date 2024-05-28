@@ -2,7 +2,7 @@ package com.example.yourvelociraptorflowers.data;
 
 import android.util.Log;
 
-import com.example.yourvelociraptorflowers.model.Plants;
+import com.example.yourvelociraptorflowers.model.plant.Plants;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.ListenerRegistration;

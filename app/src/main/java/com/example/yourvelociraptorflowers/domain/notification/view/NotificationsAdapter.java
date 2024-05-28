@@ -7,7 +7,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.yourvelociraptorflowers.databinding.NotificationItemBinding;
-import com.example.yourvelociraptorflowers.model.Yvedomlenie;
+import com.example.yourvelociraptorflowers.model.notification.Yvedomlenie;
 
 import java.util.ArrayList;
 import java.util.List;

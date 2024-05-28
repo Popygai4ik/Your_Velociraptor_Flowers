@@ -14,7 +14,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.example.yourvelociraptorflowers.R;
-import com.example.yourvelociraptorflowers.model.Plants;
+import com.example.yourvelociraptorflowers.model.plant.Plants;
 import com.example.yourvelociraptorflowers.domain.Allplants.PlantsAdapter;
 import com.example.yourvelociraptorflowers.databinding.FragmentVseTvitiBinding;
 import com.example.yourvelociraptorflowers.ui.notifications.NotificationsActivity;

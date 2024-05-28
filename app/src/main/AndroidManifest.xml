@@ -49,12 +49,13 @@
             android:label="Opisanie Activity" />
         <activity android:name=".ui.plants.search.Search_activiti"
             android:label="Search_activiti"/>
-        <activity android:name=".ui.addnewplants.Add_new_plant"
+        <activity android:name=".ui.addnewplants.adminadd.Add_new_plant"
             android:label="Add_new_plant"/>
         <activity android:name=".ui.notifications.NotificationsActivity" android:label="Notifications"/>
         <activity android:name=".ui.user.login.PasswordResetActivit" android:label="PasswordReset"/>
         <activity android:name=".ui.user.support.SupportActivityNezaregan" android:label="SupportActivityNezaregan"/>
         <activity android:name=".ui.user.support.SupportActivityZaregan" android:label="SupportActivityZaregan"/>
+        <activity android:name=".ui.addnewplants.useradd.Add_new_plant_user" android:label="Add_new_plant_user"/>
 
 
         <receiver android:name=".domain.receiver.PolivAlarmReceiver" />

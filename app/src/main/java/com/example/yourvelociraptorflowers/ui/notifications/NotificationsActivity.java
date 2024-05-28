@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.example.yourvelociraptorflowers.databinding.ActivityNotificationsBinding;
 import com.example.yourvelociraptorflowers.domain.notification.view.NotificationsAdapter;
-import com.example.yourvelociraptorflowers.model.Yvedomlenie;
+import com.example.yourvelociraptorflowers.model.notification.Yvedomlenie;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 

@@ -1,5 +1,6 @@
 package com.example.yourvelociraptorflowers.ui.plants.search;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.KeyEvent;
@@ -14,7 +15,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.example.yourvelociraptorflowers.databinding.SearchActivitiBinding;
 import com.example.yourvelociraptorflowers.domain.Allplants.PlantsAdapter;
-import com.example.yourvelociraptorflowers.model.Plants;
+import com.example.yourvelociraptorflowers.model.plant.Plants;
+import com.example.yourvelociraptorflowers.ui.addnewplants.useradd.Add_new_plant_user;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 
@@ -37,6 +39,14 @@ public class Search_activiti extends AppCompatActivity {
         binding.recycler.setVisibility(View.GONE);
         binding.backButton.setOnClickListener(v -> onBackPressed());
         binding.progressBar.setVisibility(View.VISIBLE);
+        binding.netnuznego.setVisibility(View.GONE);
+        binding.resinok.setVisibility(View.GONE);
+        binding.newButton.setVisibility(View.GONE);
+        binding.newButton.setOnClickListener(v -> {
+            Intent intent = new Intent(Search_activiti.this, Add_new_plant_user.class);
+            startActivity(intent);
+        });
+        // Загружаем данные из Firestore
 
         FirebaseFirestore firestore = FirebaseFirestore.getInstance();
         firestore.collection("plants")
@@ -89,9 +99,16 @@ public class Search_activiti extends AppCompatActivity {
 
         if (filteredPlants.isEmpty()) {
             // Если результаты не найдены, показываем сообщение
-            adapter.setItems(allPlants);
+            binding.recycler.setVisibility(View.GONE);
+            binding.netnuznego.setVisibility(View.VISIBLE);
+            binding.resinok.setVisibility(View.VISIBLE);
+            binding.newButton.setVisibility(View.VISIBLE);
             Toast.makeText(Search_activiti.this, "Растения не найдены", Toast.LENGTH_SHORT).show();
         } else {
+            binding.recycler.setVisibility(View.VISIBLE);
+            binding.netnuznego.setVisibility(View.GONE);
+            binding.resinok.setVisibility(View.GONE);
+            binding.newButton.setVisibility(View.GONE);
             // Если найдены результаты, обновляем адаптер для RecyclerView
             adapter.setItems(filteredPlants);
             adapter.notifyDataSetChanged();

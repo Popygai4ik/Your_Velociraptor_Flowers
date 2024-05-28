@@ -17,7 +17,7 @@ import android.widget.Toast;
 import com.example.yourvelociraptorflowers.R;
 import com.example.yourvelociraptorflowers.databinding.FragmentMoiTvitiBinding;
 import com.example.yourvelociraptorflowers.domain.Moiplants.PlantsAdapterMoi;
-import com.example.yourvelociraptorflowers.model.Plants;
+import com.example.yourvelociraptorflowers.model.plant.Plants;
 import com.example.yourvelociraptorflowers.ui.notifications.NotificationsActivity;
 import com.example.yourvelociraptorflowers.ui.plants.search.Search_activiti;
 import com.example.yourvelociraptorflowers.ui.user.prosmotr.User_profil;

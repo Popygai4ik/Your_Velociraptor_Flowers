@@ -21,8 +21,8 @@ import androidx.work.Worker;
 import androidx.work.WorkerParameters;
 
 import com.example.yourvelociraptorflowers.R;
-import com.example.yourvelociraptorflowers.model.Plants;
-import com.example.yourvelociraptorflowers.model.Yvedomlenie;
+import com.example.yourvelociraptorflowers.model.plant.Plants;
+import com.example.yourvelociraptorflowers.model.notification.Yvedomlenie;
 import com.example.yourvelociraptorflowers.ui.MainActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;

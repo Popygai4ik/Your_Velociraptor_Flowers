@@ -1,4 +1,4 @@
-package com.example.yourvelociraptorflowers.ui.addnewplants;
+package com.example.yourvelociraptorflowers.ui.addnewplants.adminadd;
 
 import android.os.Bundle;
 import android.view.View;
@@ -7,13 +7,8 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.yourvelociraptorflowers.databinding.AddNewPlantBinding;
-import com.example.yourvelociraptorflowers.model.Plants;
-import com.example.yourvelociraptorflowers.model.User;
+import com.example.yourvelociraptorflowers.model.plant.Plants;
 import com.google.firebase.firestore.FirebaseFirestore;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 
 public class Add_new_plant extends AppCompatActivity {
 

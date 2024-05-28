@@ -1,4 +1,4 @@
-package com.example.yourvelociraptorflowers.model;
+package com.example.yourvelociraptorflowers.model.user;
 
 import com.google.firebase.firestore.DocumentId;
 

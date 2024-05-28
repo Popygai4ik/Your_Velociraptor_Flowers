@@ -2,11 +2,10 @@ package com.example.yourvelociraptorflowers.domain.notification.view;
 
 import android.util.Log;
 
-import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.yourvelociraptorflowers.databinding.NotificationItemBinding;
-import com.example.yourvelociraptorflowers.model.Yvedomlenie;
+import com.example.yourvelociraptorflowers.model.notification.Yvedomlenie;
 
 public class NotificationViewHolder extends RecyclerView.ViewHolder {
     private final NotificationItemBinding binding;
