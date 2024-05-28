@@ -12,7 +12,9 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
+import com.example.yourvelociraptorflowers.R;
 import com.example.yourvelociraptorflowers.databinding.FragmentMoiTvitiBinding;
 import com.example.yourvelociraptorflowers.domain.Moiplants.PlantsAdapterMoi;
 import com.example.yourvelociraptorflowers.model.Plants;
@@ -55,9 +57,15 @@ public class Moi_tviti_Fragment extends Fragment {
             startActivity(intent);
         });
         binding.notificationButton.setOnClickListener(v -> {
-            Intent intent = new Intent(requireContext(), NotificationsActivity.class);
-            startActivity(intent);
+            if (FirebaseAuth.getInstance().getCurrentUser() != null) {
+                Intent intent = new Intent(requireContext(), NotificationsActivity.class);
+                startActivity(intent);
+            }else {
+                Toast.makeText(requireContext(), "Для просмотра уведомлений войдите в аккаунт", Toast.LENGTH_SHORT).show();
+            }
+
         });
+        checkNotifications();
 
         FirebaseAuth mAuth = FirebaseAuth.getInstance();
 
@@ -194,4 +202,26 @@ public class Moi_tviti_Fragment extends Fragment {
             });
         }
     }
+    private void checkNotifications() {
+        if (FirebaseAuth.getInstance().getCurrentUser() != null) {
+
+
+            FirebaseFirestore firestore = FirebaseFirestore.getInstance();
+
+            firestore.collection("users").document(FirebaseAuth.getInstance().getCurrentUser().getUid()) // Замените "userId" на текущий идентификатор пользователя
+                    .get()
+                    .addOnSuccessListener(documentSnapshot -> {
+                        if (documentSnapshot.contains("notifications")) {
+                            ArrayList<Map<String, Object>> notificationsList = (ArrayList<Map<String, Object>>) documentSnapshot.get("notifications");
+                            if (notificationsList != null && !notificationsList.isEmpty()) {
+                                binding.notificationButton.setImageResource(R.drawable.free_icon_notifications_5189239); // Измените на ваш ресурс активной иконки уведомлений
+                            } else {
+                                Log.wtf("Firestore", "Notifications list is null or empty");
+                            }
+                        } else {
+                            Log.e("Firestore", "Document does not contain 'notifications' field");
+                        }
+                    })
+                    .addOnFailureListener(e -> Log.e("Firestore", "Error checking notifications.", e));
+        }}
 }

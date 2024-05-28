@@ -6,6 +6,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -133,8 +135,13 @@ public class Vse_tviti_Fragment extends Fragment {
         });
 
         binding.notificationButton.setOnClickListener(v -> {
-            Intent intent = new Intent(requireContext(), NotificationsActivity.class);
-            startActivity(intent);
+            if (FirebaseAuth.getInstance().getCurrentUser() != null) {
+                Intent intent = new Intent(requireContext(), NotificationsActivity.class);
+                startActivity(intent);
+            }else {
+                Toast.makeText(requireContext(), "Для просмотра уведомлений войдите в аккаунт", Toast.LENGTH_SHORT).show();
+            }
+
         });
         binding.searchButton.setOnClickListener(v -> {
             Intent intent = new Intent(requireContext(), Search_activiti.class);

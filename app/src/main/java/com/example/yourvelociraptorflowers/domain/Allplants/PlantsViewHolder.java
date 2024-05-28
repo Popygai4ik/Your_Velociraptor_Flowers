@@ -28,7 +28,6 @@ public class PlantsViewHolder extends ViewHolder {
 
     private ItemVseBinding binding;
 
-
     public PlantsViewHolder(ItemVseBinding binding) {
         super(binding.getRoot());
         this.binding = binding;
@@ -44,10 +43,10 @@ public class PlantsViewHolder extends ViewHolder {
                 .into(binding.resinok);
         // Set Listener
         binding.moreButton.setOnClickListener(v -> {
-           Intent intent = new Intent(itemView.getContext(), OpisanieActivity.class);
-           intent.putExtra("Id", item.getId());
-           intent.putExtra("name", item.getName());
-           intent.putExtra("opisanie", item.getOpisanie());
+            Intent intent = new Intent(itemView.getContext(), OpisanieActivity.class);
+            intent.putExtra("Id", item.getId());
+            intent.putExtra("name", item.getName());
+            intent.putExtra("opisanie", item.getOpisanie());
             intent.putExtra("temp", item.getOpisanie2());
             intent.putExtra("vlag", item.getOpisanie3());
             intent.putExtra("ysl", item.getOpisanie4());
@@ -58,7 +57,7 @@ public class PlantsViewHolder extends ViewHolder {
             intent.putExtra("opisanie5", item.getOpisanie5());
             intent.putExtra("koofesiant_poliva", item.getKoofesiant_poliva());
 
-           itemView.getContext().startActivity(intent);
+            itemView.getContext().startActivity(intent);
         });
         binding.addButton.setOnClickListener(v -> {
             FirebaseAuth mAuth = FirebaseAuth.getInstance();
@@ -110,6 +109,12 @@ public class PlantsViewHolder extends ViewHolder {
                                                     calendar.set(Calendar.HOUR_OF_DAY, hourOfDay);
                                                     calendar.set(Calendar.MINUTE, minute);
 
+                                                    // Проверяем, не будущее ли время выбрано
+                                                    if (calendar.getTimeInMillis() > System.currentTimeMillis()) {
+                                                        Toast.makeText(itemView.getContext(), "Нельзя жить в будущем! Ты неправильно выбрал время!", Toast.LENGTH_SHORT).show();
+                                                        return;
+                                                    }
+
                                                     // Создаем карту с новым элементом и временем последнего полива
                                                     Map<String, Object> newElementMap = new HashMap<>();
                                                     newElementMap.put("id", newElementId);
@@ -119,10 +124,6 @@ public class PlantsViewHolder extends ViewHolder {
                                                     // Вычисляем даты следующих поливов и добавляем их в ArrayList
                                                     ArrayList<Long> nextWateringDates = new ArrayList<>();
                                                     Calendar nextWateringCalendar = (Calendar) calendar.clone();
-//                                                    for (int i = 1; i <= 10; i++) { // Например, добавим 10 следующих поливов
-//                                                        nextWateringCalendar.add(Calendar.DAY_OF_YEAR, koofesiant_poliva);
-//                                                        nextWateringDates.add(nextWateringCalendar.getTimeInMillis());
-//                                                    }
                                                     newElementMap.put("nextWateringDates", nextWateringDates);
 
                                                     // Добавляем новый элемент в список
@@ -151,6 +152,10 @@ public class PlantsViewHolder extends ViewHolder {
                                     calendar.get(Calendar.YEAR),
                                     calendar.get(Calendar.MONTH),
                                     calendar.get(Calendar.DAY_OF_MONTH));
+
+                            // Устанавливаем максимальную дату для выбора (текущая дата)
+                            datePickerDialog.getDatePicker().setMaxDate(System.currentTimeMillis());
+
                             datePickerDialog.show();
                         })
                         .addOnFailureListener(e -> {
@@ -161,6 +166,5 @@ public class PlantsViewHolder extends ViewHolder {
                 Toast.makeText(itemView.getContext(), "Войдите, чтобы добавить цветок", Toast.LENGTH_SHORT).show();
             }
         });
-//        binding.addButton.setOnClickListener(v -> {});
     }
 }

@@ -55,7 +55,7 @@
             android:id="@+id/delitButton"
             android:layout_width="49dp"
             android:layout_height="50dp"
-            android:layout_margin="16dp"
+            android:layout_margin="8dp"
             android:background="?android:attr/selectableItemBackground"
             android:padding="12dp"
             android:scaleType="fitCenter"

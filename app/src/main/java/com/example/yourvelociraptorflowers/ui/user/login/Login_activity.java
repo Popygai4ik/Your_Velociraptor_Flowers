@@ -27,6 +27,11 @@ public class Login_activity extends AppCompatActivity {
         binding.backButton.setOnClickListener(v -> {
             onBackPressed();
         });
+        binding.resetpas.setOnClickListener(v -> {
+            Intent intent = new Intent(this, PasswordResetActivit.class);
+            startActivity(intent);
+        });
+
     }
     public Boolean validateFields(String email, String password) {
         if (!email.contains("@")) {

@@ -57,6 +57,7 @@ public class NotificationsActivity extends AppCompatActivity {
                         for (Map<String, Object> notificationWrapper : notificationsList) {
                             Map<String, Object> notificationMap = (Map<String, Object>) notificationWrapper.get("notification");
                             if (notificationMap != null) {
+                                binding.textView.setVisibility(View.GONE);
                                 String title = (String) notificationMap.get("title");
                                 String message = (String) notificationMap.get("message");
                                 String time = (String) notificationMap.get("timestamp");
@@ -70,6 +71,7 @@ public class NotificationsActivity extends AppCompatActivity {
                                     Log.e("loadNotifications", "One or more fields are null: title=" + title + ", message=" + message + ", time=" + time);
                                 }
                             } else {
+                                binding.textView.setVisibility(View.VISIBLE);
                                 Log.e("loadNotifications", "Notification map is null");
                             }
                         }

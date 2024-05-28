@@ -26,7 +26,7 @@
         android:id="@+id/info"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Вход"
+        android:text="Техническая поддержка"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -42,7 +42,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/info"
         android:layout_marginHorizontal="16dp"
-        android:hint="Почта">
+        android:hint="Почта на которую привязан аккаунт">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/emailField"
@@ -51,9 +51,8 @@
             android:inputType="textEmailAddress" />
 
     </com.google.android.material.textfield.TextInputLayout>
-
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/passwordInputLayout"
+        android:id="@+id/problemInputLayout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
@@ -61,40 +60,32 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/emailInputLayout"
         android:layout_marginHorizontal="16dp"
-        android:hint="Пароль"
-        app:endIconMode="password_toggle">
+        android:hint="Укажите проблему">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/passwordField"
+            android:id="@+id/problemField"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textPassword" />
+            android:inputType="textEmailAddress" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
+
+
+
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/loginEmail"
+        android:id="@+id/resetpas"
         android:layout_width="0dp"
         android:layout_height="60dp"
         android:layout_marginHorizontal="16dp"
         android:layout_marginTop="16dp"
-        android:text="Войти"
+        android:text="Отправить"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.781"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/passwordInputLayout" />
+        app:layout_constraintTop_toBottomOf="@+id/problemInputLayout" />
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/resetpas"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="16dp"
-        android:layout_marginTop="16dp"
 
-        android:text="Забыл пароль"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/loginEmail" />
 
 
     <ImageView
@@ -102,7 +93,7 @@
         android:layout_width="250dp"
         android:layout_height="100dp"
         app:layout_constraintTop_toBottomOf="@+id/backButton"
-        app:srcCompat="@drawable/free_icon_login_avatar_12123009"
+        app:srcCompat="@drawable/icon_support_4961722"
 
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

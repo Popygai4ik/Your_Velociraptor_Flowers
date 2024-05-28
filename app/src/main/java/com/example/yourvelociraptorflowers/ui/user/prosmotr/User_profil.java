@@ -14,6 +14,8 @@ import com.example.yourvelociraptorflowers.databinding.ActivityProvileBinding;
 import com.example.yourvelociraptorflowers.ui.addnewplants.Add_new_plant;
 import com.example.yourvelociraptorflowers.ui.user.login.Login_activity;
 import com.example.yourvelociraptorflowers.ui.user.registration.Register_activity;
+import com.example.yourvelociraptorflowers.ui.user.support.SupportActivityNezaregan;
+import com.example.yourvelociraptorflowers.ui.user.support.SupportActivityZaregan;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -47,6 +49,10 @@ public class User_profil extends AppCompatActivity {
         });
         FirebaseUser currentUser = mAuth.getCurrentUser();
         if (currentUser != null) {
+            binding.support.setOnClickListener(v -> {
+                Intent intent = new Intent(this, SupportActivityZaregan.class);
+                startActivity(intent);
+            });
             // Пользователь залогинен
             FirebaseFirestore firestore = FirebaseFirestore.getInstance();
             firestore.collection("users").document(currentUser.getUid())
@@ -110,31 +116,32 @@ public class User_profil extends AppCompatActivity {
             binding.ne.setVisibility(View.GONE);
             binding.ine.setVisibility(View.GONE);
             binding.registerButton.setVisibility(View.GONE);
-            binding.logoutButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    FirebaseAuth.getInstance().signOut();
-                    // После выхода из аккаунта переходите на экран входа или любой другой экран
-                    // Здесь можно использовать Intent для перехода на нужный экран
-                    // Например:
-                    Intent intent = new Intent(User_profil.this, User_profil.class);
-                    startActivity(intent);
-                    finish(); // Закрываем текущую активность
+            binding.logoutButton.setOnClickListener(v -> {
+                FirebaseAuth.getInstance().signOut();
+                // После выхода из аккаунта переходите на экран входа или любой другой экран
+                // Здесь можно использовать Intent для перехода на нужный экран
+                // Например:
+                Intent intent = new Intent(User_profil.this, User_profil.class);
+                startActivity(intent);
+                finish(); // Закрываем текущую активность
 
-                }
             });
 
         } else {
+            binding.support.setOnClickListener(v -> {
+                Intent intent = new Intent(this, SupportActivityNezaregan.class);
+                startActivity(intent);
+            });
             // Пользователь не залогинен
-            binding.profileName.setVisibility(View.GONE);
+            binding.profileName.setVisibility(View.INVISIBLE);
             binding.ne.setVisibility(View.VISIBLE);
             binding.ine.setVisibility(View.VISIBLE);
-            binding.profileTitle.setVisibility(View.GONE);
-            binding.profileEmail.setVisibility(View.GONE);
-            binding.logoutButton.setVisibility(View.GONE);
+            binding.profileTitle.setVisibility(View.INVISIBLE);
+            binding.profileEmail.setVisibility(View.INVISIBLE);
+            binding.logoutButton.setVisibility(View.INVISIBLE);
             binding.loginButton.setVisibility(View.VISIBLE);
             binding.registerButton.setVisibility(View.VISIBLE);
-            binding.avatarCard.setVisibility(View.GONE);
+            binding.avatarCard.setVisibility(View.INVISIBLE);
             binding.loginButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

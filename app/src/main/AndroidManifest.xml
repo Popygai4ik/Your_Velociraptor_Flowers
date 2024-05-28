@@ -52,6 +52,11 @@
         <activity android:name=".ui.addnewplants.Add_new_plant"
             android:label="Add_new_plant"/>
         <activity android:name=".ui.notifications.NotificationsActivity" android:label="Notifications"/>
+        <activity android:name=".ui.user.login.PasswordResetActivit" android:label="PasswordReset"/>
+        <activity android:name=".ui.user.support.SupportActivityNezaregan" android:label="SupportActivityNezaregan"/>
+        <activity android:name=".ui.user.support.SupportActivityZaregan" android:label="SupportActivityZaregan"/>
+
+
         <receiver android:name=".domain.receiver.PolivAlarmReceiver" />
         <receiver
             android:name=".domain.notification.alarmnotification.MyReceiver"
