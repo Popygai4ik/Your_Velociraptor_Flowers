@@ -96,8 +96,8 @@
                 android:layout_height="120dp"
 
                 android:layout_margin="10dp"
-                android:padding="10dp"
-                android:src="@mipmap/econka_prilogenie_round"
+                android:padding="20dp"
+                android:src="@drawable/flowers_icon_176905"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
@@ -130,13 +130,14 @@
             <ImageView
                 android:id="@+id/imageView_temp"
 
-                android:padding="10dp"
                 android:layout_margin="10dp"
                 android:layout_marginTop="10dp"
                 android:layout_width="120dp"
                 android:layout_height="120dp"
-                android:src="@mipmap/econka_prilogenie_round"
-                app:layout_constraintTop_toBottomOf="@+id/imageView_opisanie" />
+                android:padding="20dp"
+                android:src="@drawable/flowers_icon_176905"
+                app:layout_constraintTop_toBottomOf="@+id/imageView_opisanie"
+               />
 
             <TextView
                 android:id="@+id/textView_temp_inf"
@@ -152,12 +153,12 @@
             <ImageView
                 android:id="@+id/imageView_vlag"
                 android:layout_marginTop="10dp"
-
-                android:padding="10dp"
+                android:padding="20dp"
+                android:src="@drawable/flowers_icon_176905"
                 android:layout_width="120dp"
                 android:layout_height="120dp"
-                android:src="@mipmap/econka_prilogenie_round"
-                app:layout_constraintTop_toBottomOf="@+id/imageView_temp" />
+                app:layout_constraintTop_toBottomOf="@+id/imageView_temp"
+                tools:ignore="MissingConstraints" />
 
             <TextView
                 android:id="@+id/textView_vlagn"
@@ -187,11 +188,11 @@
                 android:id="@+id/imageView_varch"
                 android:layout_marginTop="10dp"
 
-                android:padding="10dp"
                 android:layout_width="120dp"
                 android:layout_height="120dp"
-                android:src="@mipmap/econka_prilogenie_round"
-                app:layout_constraintTop_toBottomOf="@+id/imageView_vlag" />
+               app:layout_constraintTop_toBottomOf="@+id/imageView_vlag"
+                android:padding="20dp"
+                android:src="@drawable/flowers_icon_176905" />
 
             <TextView
                 android:id="@+id/textView_varch"

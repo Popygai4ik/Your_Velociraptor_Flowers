@@ -76,7 +76,8 @@
                 android:id="@+id/profileImage"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                tools:src="@mipmap/ic_launcher" />
+                android:src="@drawable/free_icon_user_1946392"
+                 />
 
         </com.google.android.material.card.MaterialCardView>
 

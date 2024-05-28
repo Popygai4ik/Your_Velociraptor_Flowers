@@ -22,7 +22,8 @@
                 android:id="@+id/resinok"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                tools:src="@mipmap/ic_launcher" />
+                android:src="@mipmap/ic_notification_foreground"
+                 />
 
         </com.google.android.material.card.MaterialCardView>
 
