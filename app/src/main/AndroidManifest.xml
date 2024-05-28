@@ -56,6 +56,7 @@
         <activity android:name=".ui.user.support.SupportActivityNezaregan" android:label="SupportActivityNezaregan"/>
         <activity android:name=".ui.user.support.SupportActivityZaregan" android:label="SupportActivityZaregan"/>
         <activity android:name=".ui.addnewplants.useradd.Add_new_plant_user" android:label="Add_new_plant_user"/>
+        <activity android:name=".ui.start.WelcomeActivity" android:label="WelcomeActivity"/>
 
 
         <receiver android:name=".domain.receiver.PolivAlarmReceiver" />

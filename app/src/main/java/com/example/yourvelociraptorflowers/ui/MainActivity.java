@@ -1,6 +1,8 @@
 package com.example.yourvelociraptorflowers.ui;
 
 import android.Manifest;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
@@ -21,6 +23,7 @@ import com.example.yourvelociraptorflowers.databinding.ActivityMainBinding;
 import com.example.yourvelociraptorflowers.domain.notification.worker.NotificationWorker;
 import com.example.yourvelociraptorflowers.ui.fragment.Moi_tviti_Fragment;
 import com.example.yourvelociraptorflowers.ui.fragment.Vse_tviti_Fragment;
+import com.example.yourvelociraptorflowers.ui.start.WelcomeActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -36,6 +39,22 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        // Проверка на первый запуск приложения
+        SharedPreferences preferences = getSharedPreferences("appPreferences", MODE_PRIVATE);
+        boolean isFirstRun = preferences.getBoolean("isFirstRun", true);
+
+        if (isFirstRun) {
+            SharedPreferences.Editor editor = preferences.edit();
+            editor.putBoolean("isFirstRun", false);
+            editor.apply();
+
+            Intent intent = new Intent(MainActivity.this, WelcomeActivity.class);
+            startActivity(intent);
+            finish();
+            return; // Остановить выполнение, чтобы не загружать MainActivity
+        }
+
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         startNotificationWorker();
@@ -122,6 +141,7 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     }
+
 
     private void startNotificationWorker() {
         PeriodicWorkRequest notificationWorkRequest = new PeriodicWorkRequest.Builder(NotificationWorker.class, 1, TimeUnit.MINUTES)

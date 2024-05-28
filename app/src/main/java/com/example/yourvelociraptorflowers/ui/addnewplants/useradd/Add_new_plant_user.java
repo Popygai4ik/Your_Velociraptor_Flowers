@@ -23,6 +23,7 @@ public class Add_new_plant_user extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = AddNewPlaintUserBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+        binding.backButton.setOnClickListener(v -> onBackPressed());
 
         binding.resetpas.setOnClickListener(v -> sendPlantToFirestore());
     }

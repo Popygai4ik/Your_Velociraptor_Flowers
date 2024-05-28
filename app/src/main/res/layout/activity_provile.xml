@@ -64,8 +64,8 @@
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/avatarCard"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
         app:cardCornerRadius="10dp"
        android:scaleType="centerCrop"
        app:layout_constraintEnd_toEndOf="parent"
@@ -91,7 +91,7 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/avatarCard " />
+        app:layout_constraintTop_toBottomOf="@id/avatarCard" />
 
     <!-- Email пользователя -->
     <TextView

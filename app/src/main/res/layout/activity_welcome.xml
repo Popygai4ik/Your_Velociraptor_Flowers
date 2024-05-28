@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center">
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:src="@drawable/flower_icon_176905"/>
+
+    <TextView
+        android:layout_margin="8dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Добро пожаловать в Your Velociraptor Flowers!"
+        android:textSize="24sp"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:padding="16dp"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Здравствуйте и добро пожаловать в моё приложение, посвящённое управлению своими домашними растениями. Здесь вы найдёте всё необходимое для ухода за растениями - советы по уходу, температурному режиму, влажности, а также в нашем приложении вы получите удобного помощника, который напомнит вам о поливе ваши домашние растения."
+        android:textSize="15sp"
+        android:layout_margin="8dp"
+        android:gravity="center"
+        android:padding="16dp"/>
+
+    <Button
+        android:layout_margin="16dp"
+        android:id="@+id/continueButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Продолжить"/>
+    <TextView
+        android:layout_marginTop="70dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="by Serafim Pankin"
+        android:textSize="16sp"
+        android:textStyle="italic"
+        android:gravity="center"
+
+        android:padding="16dp"/>
+</LinearLayout>
