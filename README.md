@@ -22,7 +22,7 @@ DatePickerDialog и TimePickerDialog: Удобный выбор даты и вр
 <img src="screenshots/Screenshot_3.jpg" alt="О цветке" width="300"/>
 *О цветке*
 
-<img src="screenshots/Screenshot_4.jpg" alt="Стартовое окно" width="300"/>
+<img src="screenshots/Screenshot_4.png" alt="Стартовое окно" width="300"/>
 *Стартовое окно*
 Контакты<br>
 Автор: Панкин Серафим Дмитриевич<br>
