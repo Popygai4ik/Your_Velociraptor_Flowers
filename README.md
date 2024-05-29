@@ -13,10 +13,10 @@ Your_Velociraptor_Flowers — это мобильное приложение д�
 Firebase Authentication: Обеспечивает безопасную аутентификацию пользователей.<br>
 Firebase Firestore: Надежное и масштабируемое облачное хранилище данных.<br>
 DatePickerDialog и TimePickerDialog: Удобный выбор даты и времени для полива.<br>
-![Все цветы](screenshots/screenshot1.png)
-![Мои цветы](screenshots/screenshot2.png)
-![О цветке](screenshots/screenshot3.png)
-![Стартовое окно](screenshots/screenshot3.png)
+![Все цветы](screenshots/screenshot_1.png)
+![Мои цветы](screenshots/screenshot_2.png)
+![О цветке](screenshots/screenshot_3.png)
+![Стартовое окно](screenshots/screenshot_3.png)
 Контакты<br>
 Автор: Панкин Серафим Дмитриевич<br>
 Email: serafimpankin@yandex.ru<br>
