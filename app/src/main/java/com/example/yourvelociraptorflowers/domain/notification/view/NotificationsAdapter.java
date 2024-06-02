@@ -7,17 +7,17 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.yourvelociraptorflowers.databinding.NotificationItemBinding;
-import com.example.yourvelociraptorflowers.model.notification.Yvedomlenie;
+import com.example.yourvelociraptorflowers.model.notification.Notify;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class NotificationsAdapter extends RecyclerView.Adapter<NotificationViewHolder> {
-    private List<Yvedomlenie> yvedomlenieList = new ArrayList<>();
+    private List<Notify> yvedomlenieList = new ArrayList<>();
     private final OnDeleteClickListener onDeleteClickListener;
 
-    public NotificationsAdapter(List<Yvedomlenie> yvedomlenieList, OnDeleteClickListener onDeleteClickListener) {
-        this.yvedomlenieList = yvedomlenieList;
+    public NotificationsAdapter(List<Notify> notifyList, OnDeleteClickListener onDeleteClickListener) {
+        this.yvedomlenieList = notifyList;
         this.onDeleteClickListener = onDeleteClickListener;
     }
 
@@ -39,8 +39,8 @@ public class NotificationsAdapter extends RecyclerView.Adapter<NotificationViewH
         return yvedomlenieList.size();
     }
 
-    public void setItems(List<Yvedomlenie> yvedomlenieList) {
-        this.yvedomlenieList = new ArrayList<>(yvedomlenieList);
+    public void setItems(List<Notify> notifyList) {
+        this.yvedomlenieList = new ArrayList<>(notifyList);
         notifyDataSetChanged();
     }
 

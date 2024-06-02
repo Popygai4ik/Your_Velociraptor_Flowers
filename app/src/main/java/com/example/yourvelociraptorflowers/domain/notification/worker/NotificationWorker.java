@@ -22,7 +22,7 @@ import androidx.work.WorkerParameters;
 
 import com.example.yourvelociraptorflowers.R;
 import com.example.yourvelociraptorflowers.model.plant.Plants;
-import com.example.yourvelociraptorflowers.model.notification.Yvedomlenie;
+import com.example.yourvelociraptorflowers.model.notification.Notify;
 import com.example.yourvelociraptorflowers.ui.MainActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -164,7 +164,7 @@ public class NotificationWorker extends Worker {
                 if (!prefs.getBoolean(plantId + "_hourly_notified", false)) {
                     createScheduledNotification(context, plant, nextWateringTimestampLong - oneHourInMillis, "До полива меньше часа!");
                     Map<String, Object> newNotificationMap = new HashMap<>();
-                    Yvedomlenie notification = new Yvedomlenie("💧 Напоминание о поливе 📢", plant.getName() + ": До полива меньше часа!", currentTimeNormal);
+                    Notify notification = new Notify("💧 Напоминание о поливе 📢", plant.getName() + ": До полива меньше часа!", currentTimeNormal);
                     newNotificationMap.put("notification", notification);    // Запись нового уведомления в Firestore
                     firestore.collection("users")
                             .document(userId)
@@ -203,7 +203,7 @@ public class NotificationWorker extends Worker {
                 if (!prefs.getBoolean(plantId + "_minute_notified", false)) {
                     createScheduledNotification(context, plant, nextWateringTimestampLong - oneMinuteInMillis, "До полива меньше минуты!");
                     Map<String, Object> newNotificationMap2 = new HashMap<>();
-                    Yvedomlenie notification2 = new Yvedomlenie("💧 Напоминание о поливе 📢", plant.getName() + ": До полива меньше минуты!", currentTimeNormal);
+                    Notify notification2 = new Notify("💧 Напоминание о поливе 📢", plant.getName() + ": До полива меньше минуты!", currentTimeNormal);
                     newNotificationMap2.put("notification", notification2);    // Запись нового уведомления в Firestore
                     firestore.collection("users")
                             .document(userId)
@@ -240,7 +240,7 @@ public class NotificationWorker extends Worker {
                     calendar.add(Calendar.MINUTE, 1);
                     String currentTimeNormal2 = sdf2.format(calendar.getTime());
 
-                    Yvedomlenie notification = new Yvedomlenie("💧 Напоминание о поливе 📢", plant.getName() + ": Пора поливать!", currentTimeNormal2);
+                    Notify notification = new Notify("💧 Напоминание о поливе 📢", plant.getName() + ": Пора поливать!", currentTimeNormal2);
 
                     newNotificationMap1.put("notification", notification);
 

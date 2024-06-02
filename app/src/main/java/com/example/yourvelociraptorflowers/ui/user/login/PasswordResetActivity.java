@@ -11,7 +11,7 @@ import com.example.yourvelociraptorflowers.databinding.ResetPasswordBinding;
 import com.example.yourvelociraptorflowers.ui.MainActivity;
 import com.google.firebase.auth.FirebaseAuth;
 
-public class PasswordResetActivit extends AppCompatActivity {
+public class PasswordResetActivity extends AppCompatActivity {
     private ResetPasswordBinding binding;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -30,8 +30,8 @@ public class PasswordResetActivit extends AppCompatActivity {
             FirebaseAuth.getInstance().sendPasswordResetEmail(email)
                     .addOnCompleteListener(task -> {
                         if (task.isSuccessful()) {
-                            Toast.makeText(PasswordResetActivit.this, "Проверьте вашу почту для востановления пароля", Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(PasswordResetActivit.this, MainActivity.class));
+                            Toast.makeText(PasswordResetActivity.this, "Проверьте вашу почту для востановления пароля", Toast.LENGTH_SHORT).show();
+                            startActivity(new Intent(PasswordResetActivity.this, MainActivity.class));
                         }
                     });
         });

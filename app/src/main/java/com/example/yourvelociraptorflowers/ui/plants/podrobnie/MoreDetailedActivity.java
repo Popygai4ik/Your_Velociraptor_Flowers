@@ -26,7 +26,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class OpisanieActivity extends AppCompatActivity {
+public class MoreDetailedActivity extends AppCompatActivity {
 
     private TextView opisanieTextView;
     private OpisanieActivityBinding binding;

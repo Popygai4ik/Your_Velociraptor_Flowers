@@ -67,7 +67,7 @@ public class Add_new_plant extends AppCompatActivity {
                                 descriptionTemp,
                                 descriptionVlag,
                                 descriptionVrsh,
-                                descriptionUTUB, 21
+                                descriptionUTUB, 21, 2500
                                 );
                         firestore.collection("plants")
                                 .add(newPlant)

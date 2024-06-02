@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.example.yourvelociraptorflowers.databinding.ActivityNotificationsBinding;
 import com.example.yourvelociraptorflowers.domain.notification.view.NotificationsAdapter;
-import com.example.yourvelociraptorflowers.model.notification.Yvedomlenie;
+import com.example.yourvelociraptorflowers.model.notification.Notify;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 
@@ -22,7 +22,7 @@ import java.util.Map;
 public class NotificationsActivity extends AppCompatActivity {
     private NotificationsAdapter adapter;
     private ActivityNotificationsBinding binding;
-    private List<Yvedomlenie> yvedomlenieList = new ArrayList<>();
+    private List<Notify> notifyList = new ArrayList<>();
     private FirebaseFirestore firestore;
     private String userId;
 
@@ -35,7 +35,7 @@ public class NotificationsActivity extends AppCompatActivity {
         firestore = FirebaseFirestore.getInstance();
         userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
-        adapter = new NotificationsAdapter(yvedomlenieList, this::deleteNotification);
+        adapter = new NotificationsAdapter(notifyList, this::deleteNotification);
         binding.recycler.setLayoutManager(new LinearLayoutManager(this));
         binding.recycler.setAdapter(adapter);
         binding.recycler.setVisibility(View.GONE);
@@ -66,7 +66,7 @@ public class NotificationsActivity extends AppCompatActivity {
                                 Log.d("loadNotifications", "Notification: " + title + ", " + message + ", " + time);
 
                                 if (title != null && message != null && time != null) {
-                                    yvedomlenieList.add(new Yvedomlenie(title, message, time));
+                                    notifyList.add(new Notify(title, message, time));
                                 } else {
                                     Log.e("loadNotifications", "One or more fields are null: title=" + title + ", message=" + message + ", time=" + time);
                                 }
@@ -88,20 +88,20 @@ public class NotificationsActivity extends AppCompatActivity {
 
 
     private void deleteNotification(int position) {
-        yvedomlenieList.remove(position);
+        notifyList.remove(position);
         adapter.notifyItemRemoved(position);
         updateNotificationsInFirestore();
     }
 
     private void clearAllNotifications() {
-        yvedomlenieList.clear();
+        notifyList.clear();
         adapter.notifyDataSetChanged();
         updateNotificationsInFirestore();
     }
 
     private void updateNotificationsInFirestore() {
         ArrayList<Map<String, Object>> notificationsList = new ArrayList<>();
-        for (Yvedomlenie notification : yvedomlenieList) {
+        for (Notify notification : notifyList) {
             Map<String, Object> notificationWrapper = new HashMap<>();
             Map<String, Object> notificationMap = new HashMap<>();
             notificationMap.put("title", notification.getTitle());

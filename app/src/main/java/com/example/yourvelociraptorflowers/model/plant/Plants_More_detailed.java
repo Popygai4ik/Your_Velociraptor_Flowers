@@ -2,7 +2,7 @@ package com.example.yourvelociraptorflowers.model.plant;
 
 
 import com.google.firebase.firestore.DocumentId;
-public class Plants_podrob {
+public class Plants_More_detailed {
 
     // Аннотация позволяет записать в поле класса имя документа
     @DocumentId
@@ -24,7 +24,7 @@ public class Plants_podrob {
     private String resinok3;
     private String resinok4;
 
-    public Plants_podrob(String id, String name, String opisanie, String resinok2, String resinok3, String resinok4, String resinok, String opisanie2, String opisanie3, String opisanie4, String opisanie5, String opisanie6, String opisanie7, String opisanie8, String opisanie9, String opisanie10) {
+    public Plants_More_detailed(String id, String name, String opisanie, String resinok2, String resinok3, String resinok4, String resinok, String opisanie2, String opisanie3, String opisanie4, String opisanie5, String opisanie6, String opisanie7, String opisanie8, String opisanie9, String opisanie10) {
         this.id = id;
         this.name = name;
         this.opisanie = opisanie;

@@ -23,10 +23,11 @@ public class Plants {
     private String opisanie5;
     private String lastWateredFormatted;
     private Integer koofesiant_poliva;
+    private Integer coefficient_illumination;
     private ArrayList <String> lastWatered;
 
 
-    public Plants(String name, String opisanie, String resinok,  String resinok2, String resinok3, String resinok4, String opisanie2, String opisanie3, String opisanie4, String opisanie5, Integer koofesiant_poliva) {
+    public Plants(String name, String opisanie, String resinok,  String resinok2, String resinok3, String resinok4, String opisanie2, String opisanie3, String opisanie4, String opisanie5, Integer koofesiant_poliva, Integer coefficient_illumination) {
         this.setName(name);
         this.setOpisanie(opisanie);
         this.setResinok(resinok);
@@ -38,6 +39,7 @@ public class Plants {
         this.setResinok4(resinok4);
         this.setOpisanie5(opisanie5);
         this.setKoofesiant_poliva(koofesiant_poliva);
+        this.setCoefficient_illumination(coefficient_illumination);
 
 
     }
@@ -153,5 +155,13 @@ public class Plants {
 
     public void setLastWatered(ArrayList<String> lastWatered) {
         this.lastWatered = lastWatered;
+    }
+
+    public Integer getCoefficient_illumination() {
+        return coefficient_illumination;
+    }
+
+    public void setCoefficient_illumination(Integer coefficient_illumination) {
+        this.coefficient_illumination = coefficient_illumination;
     }
 }

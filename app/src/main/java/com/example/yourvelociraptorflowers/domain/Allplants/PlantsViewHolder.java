@@ -13,7 +13,7 @@ import com.bumptech.glide.Glide;
 import com.example.yourvelociraptorflowers.R;
 import com.example.yourvelociraptorflowers.databinding.ItemVseBinding;
 import com.example.yourvelociraptorflowers.model.plant.Plants;
-import com.example.yourvelociraptorflowers.ui.plants.podrobnie.OpisanieActivity;
+import com.example.yourvelociraptorflowers.ui.plants.podrobnie.MoreDetailedActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -43,7 +43,7 @@ public class PlantsViewHolder extends ViewHolder {
                 .into(binding.resinok);
         // Set Listener
         binding.moreButton.setOnClickListener(v -> {
-            Intent intent = new Intent(itemView.getContext(), OpisanieActivity.class);
+            Intent intent = new Intent(itemView.getContext(), MoreDetailedActivity.class);
             intent.putExtra("Id", item.getId());
             intent.putExtra("name", item.getName());
             intent.putExtra("opisanie", item.getOpisanie());

@@ -38,25 +38,26 @@
             android:label="Login Activity">
         </activity>
         <activity
-            android:name=".ui.user.prosmotr.User_profil"
+            android:name=".ui.user.viewing.User_profile"
             android:label="User Profile">
         </activity>
         <activity
             android:name=".ui.user.registration.Register_activity"
             android:label="Register Activity" />
         <activity
-            android:name=".ui.plants.podrobnie.OpisanieActivity"
+            android:name=".ui.plants.podrobnie.MoreDetailedActivity"
             android:label="Opisanie Activity" />
-        <activity android:name=".ui.plants.search.Search_activiti"
+        <activity android:name=".ui.plants.search.Search_activity"
             android:label="Search_activiti"/>
         <activity android:name=".ui.addnewplants.adminadd.Add_new_plant"
             android:label="Add_new_plant"/>
         <activity android:name=".ui.notifications.NotificationsActivity" android:label="Notifications"/>
-        <activity android:name=".ui.user.login.PasswordResetActivit" android:label="PasswordReset"/>
-        <activity android:name=".ui.user.support.SupportActivityNezaregan" android:label="SupportActivityNezaregan"/>
-        <activity android:name=".ui.user.support.SupportActivityZaregan" android:label="SupportActivityZaregan"/>
+        <activity android:name=".ui.user.login.PasswordResetActivity" android:label="PasswordReset"/>
+        <activity android:name=".ui.user.support.SupportActivityNotRegistered" android:label="SupportActivityNezaregan"/>
+        <activity android:name=".ui.user.support.SupportActivityRegistered" android:label="SupportActivityZaregan"/>
         <activity android:name=".ui.addnewplants.useradd.Add_new_plant_user" android:label="Add_new_plant_user"/>
         <activity android:name=".ui.start.WelcomeActivity" android:label="WelcomeActivity"/>
+        <activity android:name=".ui.plants.illumination.IlluminationActivity" android:label="IlluminationActivity"/>
 
 
         <receiver android:name=".domain.receiver.PolivAlarmReceiver" />

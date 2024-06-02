@@ -9,9 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.yourvelociraptorflowers.databinding.ActivityCustomBinding;
 import com.example.yourvelociraptorflowers.ui.MainActivity;
-import com.google.firebase.Firebase;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 
 public class Login_activity extends AppCompatActivity {
 
@@ -28,7 +26,7 @@ public class Login_activity extends AppCompatActivity {
             onBackPressed();
         });
         binding.resetpas.setOnClickListener(v -> {
-            Intent intent = new Intent(this, PasswordResetActivit.class);
+            Intent intent = new Intent(this, PasswordResetActivity.class);
             startActivity(intent);
         });
 

@@ -5,7 +5,7 @@ import android.util.Log;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.yourvelociraptorflowers.databinding.NotificationItemBinding;
-import com.example.yourvelociraptorflowers.model.notification.Yvedomlenie;
+import com.example.yourvelociraptorflowers.model.notification.Notify;
 
 public class NotificationViewHolder extends RecyclerView.ViewHolder {
     private final NotificationItemBinding binding;
@@ -23,7 +23,7 @@ public class NotificationViewHolder extends RecyclerView.ViewHolder {
         });
     }
 
-    public void bind(Yvedomlenie item) {
+    public void bind(Notify item) {
         Log.wtf("NotificationViewHolder", "bind: " + item.getTitle() + " " + item.getMessage() + " " + item.getTimestamp());
         binding.title.setText(item.getTitle());
         binding.massage.setText(item.getMessage());

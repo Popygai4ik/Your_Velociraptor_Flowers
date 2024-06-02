@@ -1,6 +1,5 @@
 package com.example.yourvelociraptorflowers.ui.user.support;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ImageButton;
@@ -15,7 +14,7 @@ import com.example.yourvelociraptorflowers.R;
 import java.util.HashMap;
 import java.util.Map;
 
-public class SupportActivityNezaregan extends AppCompatActivity {
+public class SupportActivityNotRegistered extends AppCompatActivity {
 
     private TextInputEditText emailField;
     private TextInputEditText problemField;
@@ -60,8 +59,8 @@ public class SupportActivityNezaregan extends AppCompatActivity {
         db.collection("problems")
                 .add(problemData)
                 .addOnSuccessListener(documentReference -> {
-                    Toast.makeText(SupportActivityNezaregan.this, "Проблема успешно отправлена, ждите ответа на почту!", Toast.LENGTH_SHORT).show();
-                    startActivity(new Intent(SupportActivityNezaregan.this, MainActivity.class));
-                }).addOnFailureListener(e -> Toast.makeText(SupportActivityNezaregan.this, "Ошибка отправки данных: " + e.getMessage(), Toast.LENGTH_SHORT).show());
+                    Toast.makeText(SupportActivityNotRegistered.this, "Проблема успешно отправлена, ждите ответа на почту!", Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(SupportActivityNotRegistered.this, MainActivity.class));
+                }).addOnFailureListener(e -> Toast.makeText(SupportActivityNotRegistered.this, "Ошибка отправки данных: " + e.getMessage(), Toast.LENGTH_SHORT).show());
     }
 }

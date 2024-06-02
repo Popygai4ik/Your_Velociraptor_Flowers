@@ -19,8 +19,8 @@ import com.example.yourvelociraptorflowers.databinding.FragmentMoiTvitiBinding;
 import com.example.yourvelociraptorflowers.domain.Moiplants.PlantsAdapterMoi;
 import com.example.yourvelociraptorflowers.model.plant.Plants;
 import com.example.yourvelociraptorflowers.ui.notifications.NotificationsActivity;
-import com.example.yourvelociraptorflowers.ui.plants.search.Search_activiti;
-import com.example.yourvelociraptorflowers.ui.user.prosmotr.User_profil;
+import com.example.yourvelociraptorflowers.ui.plants.search.Search_activity;
+import com.example.yourvelociraptorflowers.ui.user.viewing.User_profile;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -48,12 +48,12 @@ public class Moi_tviti_Fragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         binding.profileButton.setOnClickListener(v -> {
-            Intent intent = new Intent(requireContext(), User_profil.class);
+            Intent intent = new Intent(requireContext(), User_profile.class);
             startActivity(intent);
         });
 
         binding.searchButton.setOnClickListener(v -> {
-            Intent intent = new Intent(requireContext(), Search_activiti.class);
+            Intent intent = new Intent(requireContext(), Search_activity.class);
             startActivity(intent);
         });
         binding.notificationButton.setOnClickListener(v -> {
@@ -197,7 +197,7 @@ public class Moi_tviti_Fragment extends Fragment {
             binding.registerButton.setVisibility(View.VISIBLE);
             binding.textView2.setVisibility(View.GONE);
             binding.registerButton.setOnClickListener(v -> {
-                Intent intent = new Intent(requireContext(), User_profil.class);
+                Intent intent = new Intent(requireContext(), User_profile.class);
                 startActivity(intent);
             });
         }

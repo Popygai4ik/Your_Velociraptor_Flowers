@@ -2,16 +2,14 @@ package com.example.yourvelociraptorflowers.model.notification;
 
 import com.google.firebase.firestore.DocumentId;
 
-import java.util.Date;
-
-public class Yvedomlenie {
+public class Notify {
     @DocumentId
     private String id;
     private String title;
     private String message;
     private String timestamp;
-    public Yvedomlenie() { }
-    public Yvedomlenie(String title, String message, String timestamp) {
+    public Notify() { }
+    public Notify(String title, String message, String timestamp) {
         this.setTitle(title);
         this.setMessage(message);
         this.setTimestamp(timestamp);

@@ -22,7 +22,7 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 
 import java.util.ArrayList;
 import java.util.List;
-public class Search_activiti extends AppCompatActivity {
+public class Search_activity extends AppCompatActivity {
     private PlantsAdapter adapter;
     private SearchActivitiBinding binding;
     private List<Plants> allPlants = new ArrayList<>();
@@ -43,7 +43,7 @@ public class Search_activiti extends AppCompatActivity {
         binding.resinok.setVisibility(View.GONE);
         binding.newButton.setVisibility(View.GONE);
         binding.newButton.setOnClickListener(v -> {
-            Intent intent = new Intent(Search_activiti.this, Add_new_plant_user.class);
+            Intent intent = new Intent(Search_activity.this, Add_new_plant_user.class);
             startActivity(intent);
         });
         // Загружаем данные из Firestore
@@ -103,7 +103,7 @@ public class Search_activiti extends AppCompatActivity {
             binding.netnuznego.setVisibility(View.VISIBLE);
             binding.resinok.setVisibility(View.VISIBLE);
             binding.newButton.setVisibility(View.VISIBLE);
-            Toast.makeText(Search_activiti.this, "Растения не найдены", Toast.LENGTH_SHORT).show();
+            Toast.makeText(Search_activity.this, "Растения не найдены", Toast.LENGTH_SHORT).show();
         } else {
             binding.recycler.setVisibility(View.VISIBLE);
             binding.netnuznego.setVisibility(View.GONE);

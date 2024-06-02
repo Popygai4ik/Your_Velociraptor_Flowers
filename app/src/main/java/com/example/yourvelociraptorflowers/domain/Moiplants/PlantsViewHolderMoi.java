@@ -1,6 +1,7 @@
 package com.example.yourvelociraptorflowers.domain.Moiplants;
 
 import android.content.Intent;
+import android.util.Log;
 import android.widget.Toast;
 
 import androidx.recyclerview.widget.RecyclerView.ViewHolder;
@@ -9,7 +10,8 @@ import com.bumptech.glide.Glide;
 import com.example.yourvelociraptorflowers.R;
 import com.example.yourvelociraptorflowers.databinding.ItemMoiBinding;
 import com.example.yourvelociraptorflowers.model.plant.Plants;
-import com.example.yourvelociraptorflowers.ui.plants.podrobnie.OpisanieActivity;
+import com.example.yourvelociraptorflowers.ui.plants.illumination.IlluminationActivity;
+import com.example.yourvelociraptorflowers.ui.plants.podrobnie.MoreDetailedActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -105,7 +107,7 @@ public class PlantsViewHolderMoi extends ViewHolder {
                     .into(binding.resinok);
             // Set Listener
             binding.moreButton.setOnClickListener(v -> {
-                Intent intent = new Intent(itemView.getContext(), OpisanieActivity.class);
+                Intent intent = new Intent(itemView.getContext(), MoreDetailedActivity.class);
                 intent.putExtra("name", item.getName());
                 intent.putExtra("opisanie", item.getOpisanie());
                 intent.putExtra("temp", item.getOpisanie2());
@@ -117,6 +119,15 @@ public class PlantsViewHolderMoi extends ViewHolder {
                 intent.putExtra("resinok4", item.getResinok4());
                 intent.putExtra("opisanie5", item.getOpisanie5());
                 itemView.getContext().startActivity(intent);
+            });
+            binding.illuminationButton.setOnClickListener(v -> {
+                Intent intent = new Intent(itemView.getContext(), IlluminationActivity.class);
+                intent.putExtra("name", item.getName());
+                intent.putExtra("resinok", item.getResinok());
+                intent.putExtra("coefficient_illumination", item.getCoefficient_illumination());
+//                Log.wtf("LOGG", String.valueOf(item.getCoefficient_illumination()));
+                itemView.getContext().startActivity(intent);
+
             });
             binding.delitButton.setOnClickListener(v -> {
                 FirebaseAuth mAuth = FirebaseAuth.getInstance();

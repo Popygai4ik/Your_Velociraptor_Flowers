@@ -1,0 +1,130 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:gbp="http://schemas.android.com/apk/res-auto">
+
+    <!-- Навигационный бар сверху -->
+    <LinearLayout
+        android:id="@+id/navigationBar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:orientation="horizontal"
+        android:background="?android:attr/colorPrimary">
+        <ImageButton
+            android:id="@+id/backButton"
+            android:layout_width="49dp"
+            android:background="?android:attr/selectableItemBackground"
+            android:layout_height="50dp"
+            android:padding="12dp"
+            android:layout_marginStart="16dp"
+            android:layout_gravity="center"
+            android:scaleType="fitCenter"
+            android:src="@drawable/free_icon_back_arrow_594564"/>
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginStart="16dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="Все цветы"
+            android:textSize="16sp"
+            tools:text="JOPAAAAA"
+            android:textColor="@android:color/black"/>
+    </LinearLayout>
+
+    <!-- Обертывание всех элементов в ScrollView -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/navigationBar">
+
+        <!-- Контейнер для всех элементов внутри ScrollView -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <!-- Изображение по центру -->
+            <ImageView
+                android:id="@+id/centerImage"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:src="@drawable/icon_light_bulb_1847035"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"/>
+
+            <TextView
+                android:id="@+id/infoLabel"
+                android:layout_width="wrap_content"
+                android:gravity="center"
+                android:layout_height="wrap_content"
+                android:text="Для получения более точного измерения его необходимо проводить в 12:00, когда солнце обеспечивает максимальное освещение. Также важно повернуть ваш телефон экраном к цветку и подождать 15 секунд. После этого вы получите результат!"
+                android:textSize="18sp"
+                android:textColor="@android:color/black"
+                android:layout_marginTop="20dp"/>
+
+            <!-- Кнопка измерить по центру -->
+            <Button
+                android:id="@+id/measureButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Измерить"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"/>
+
+            <!-- Прогресс-бар загрузки -->
+            <RelativeLayout
+                android:id="@+id/progressLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:visibility="gone"
+                android:gravity="center">
+
+                <ProgressBar
+                    android:id="@+id/progressBar"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:indeterminate="false"
+                    android:max="100"
+                    android:progressDrawable="@drawable/circular_progress_bar"
+                    android:layout_centerInParent="true" />
+
+                <TextView
+                    android:id="@+id/progressText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:text="0%"
+                    android:textSize="20sp"
+                    android:textColor="@android:color/black"/>
+            </RelativeLayout>
+
+            <!-- Поля для получения результата -->
+            <LinearLayout
+                android:id="@+id/resultFields"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp">
+
+                <TextView
+                    android:layout_margin="10dp"
+                    android:id="@+id/resultLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Результат: пока измерений нет!"
+                    android:textSize="18sp"
+                    android:textColor="@android:color/black"/>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</RelativeLayout>

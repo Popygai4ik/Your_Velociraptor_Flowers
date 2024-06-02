@@ -1,4 +1,4 @@
-package com.example.yourvelociraptorflowers.ui.user.prosmotr;
+package com.example.yourvelociraptorflowers.ui.user.viewing;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,8 +14,8 @@ import com.example.yourvelociraptorflowers.databinding.ActivityProvileBinding;
 import com.example.yourvelociraptorflowers.ui.addnewplants.adminadd.Add_new_plant;
 import com.example.yourvelociraptorflowers.ui.user.login.Login_activity;
 import com.example.yourvelociraptorflowers.ui.user.registration.Register_activity;
-import com.example.yourvelociraptorflowers.ui.user.support.SupportActivityNezaregan;
-import com.example.yourvelociraptorflowers.ui.user.support.SupportActivityZaregan;
+import com.example.yourvelociraptorflowers.ui.user.support.SupportActivityNotRegistered;
+import com.example.yourvelociraptorflowers.ui.user.support.SupportActivityRegistered;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -24,7 +24,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class User_profil extends AppCompatActivity {
+public class User_profile extends AppCompatActivity {
 
     private ActivityProvileBinding binding;
     @Override
@@ -50,7 +50,7 @@ public class User_profil extends AppCompatActivity {
         FirebaseUser currentUser = mAuth.getCurrentUser();
         if (currentUser != null) {
             binding.support.setOnClickListener(v -> {
-                Intent intent = new Intent(this, SupportActivityZaregan.class);
+                Intent intent = new Intent(this, SupportActivityRegistered.class);
                 startActivity(intent);
             });
             // Пользователь залогинен
@@ -104,7 +104,7 @@ public class User_profil extends AppCompatActivity {
             binding.addButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent intent = new Intent(User_profil.this, Add_new_plant.class);
+                    Intent intent = new Intent(User_profile.this, Add_new_plant.class);
                     startActivity(intent);
                 }
             });
@@ -121,7 +121,7 @@ public class User_profil extends AppCompatActivity {
                 // После выхода из аккаунта переходите на экран входа или любой другой экран
                 // Здесь можно использовать Intent для перехода на нужный экран
                 // Например:
-                Intent intent = new Intent(User_profil.this, User_profil.class);
+                Intent intent = new Intent(User_profile.this, User_profile.class);
                 startActivity(intent);
                 finish(); // Закрываем текущую активность
 
@@ -129,7 +129,7 @@ public class User_profil extends AppCompatActivity {
 
         } else {
             binding.support.setOnClickListener(v -> {
-                Intent intent = new Intent(this, SupportActivityNezaregan.class);
+                Intent intent = new Intent(this, SupportActivityNotRegistered.class);
                 startActivity(intent);
             });
             // Пользователь не залогинен
@@ -145,14 +145,14 @@ public class User_profil extends AppCompatActivity {
             binding.loginButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent intent = new Intent(User_profil.this, Login_activity.class);
+                    Intent intent = new Intent(User_profile.this, Login_activity.class);
                     startActivity(intent);
                 }
             });
             binding.registerButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent intent = new Intent(User_profil.this, Register_activity.class);
+                    Intent intent = new Intent(User_profile.this, Register_activity.class);
                     startActivity(intent);
                 }
             });

@@ -2,22 +2,18 @@ package com.example.yourvelociraptorflowers.ui.user.support;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.yourvelociraptorflowers.databinding.ResetPasswordBinding;
 import com.example.yourvelociraptorflowers.databinding.SupportActivitiZareganBinding;
 import com.example.yourvelociraptorflowers.ui.MainActivity;
-import com.google.android.material.button.MaterialButton;
-import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.example.yourvelociraptorflowers.R;
+
 import java.util.HashMap;
 import java.util.Map;
 
-public class SupportActivityZaregan extends AppCompatActivity {
+public class SupportActivityRegistered extends AppCompatActivity {
 
     private SupportActivitiZareganBinding binding;
 
@@ -50,8 +46,8 @@ public class SupportActivityZaregan extends AppCompatActivity {
         db.collection("problems")
                 .add(problemData)
                 .addOnSuccessListener(documentReference -> {
-                    Toast.makeText(SupportActivityZaregan.this, "Проблема успешно отправлена, ждите ответа на почту!", Toast.LENGTH_SHORT).show();
-                    startActivity(new Intent(SupportActivityZaregan.this, MainActivity.class));
-                }).addOnFailureListener(e -> Toast.makeText(SupportActivityZaregan.this, "Ошибка отправки данных: " + e.getMessage(), Toast.LENGTH_SHORT).show());
+                    Toast.makeText(SupportActivityRegistered.this, "Проблема успешно отправлена, ждите ответа на почту!", Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(SupportActivityRegistered.this, MainActivity.class));
+                }).addOnFailureListener(e -> Toast.makeText(SupportActivityRegistered.this, "Ошибка отправки данных: " + e.getMessage(), Toast.LENGTH_SHORT).show());
     }
 }
