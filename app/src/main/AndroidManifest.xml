@@ -13,6 +13,8 @@
 
 
     <application
+        android:networkSecurityConfig="@xml/network_security_config"
+
 
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -49,15 +51,18 @@
             android:label="Opisanie Activity" />
         <activity android:name=".ui.plants.search.Search_activity"
             android:label="Search_activiti"/>
-        <activity android:name=".ui.addnewplants.adminadd.Add_new_plant"
+        <activity android:name=".ui.plants.addnewplants.adminadd.Add_new_plant"
             android:label="Add_new_plant"/>
         <activity android:name=".ui.notifications.NotificationsActivity" android:label="Notifications"/>
         <activity android:name=".ui.user.login.PasswordResetActivity" android:label="PasswordReset"/>
         <activity android:name=".ui.user.support.SupportActivityNotRegistered" android:label="SupportActivityNezaregan"/>
         <activity android:name=".ui.user.support.SupportActivityRegistered" android:label="SupportActivityZaregan"/>
-        <activity android:name=".ui.addnewplants.useradd.Add_new_plant_user" android:label="Add_new_plant_user"/>
+        <activity android:name=".ui.plants.addnewplants.useradd.Add_new_plant_user" android:label="Add_new_plant_user"/>
         <activity android:name=".ui.start.WelcomeActivity" android:label="WelcomeActivity"/>
         <activity android:name=".ui.plants.illumination.IlluminationActivity" android:label="IlluminationActivity"/>
+        <activity android:name=".ui.user.location.ResetLocationActivity" android:label="ResetLocationActivity"/>
+        <activity android:name=".ui.weather.WeatherActivity" android:label="WeatherActivity"/>
+        <activity android:name=".ui.weather.ChangeConsentActivity" android:label="ChangeConsentActivity"/>
 
 
         <receiver android:name=".domain.receiver.PolivAlarmReceiver" />

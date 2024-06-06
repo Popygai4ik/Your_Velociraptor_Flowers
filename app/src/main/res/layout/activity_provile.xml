@@ -94,6 +94,7 @@
         app:layout_constraintTop_toBottomOf="@id/avatarCard" />
 
     <!-- Email пользователя -->
+
     <TextView
         android:id="@+id/profileEmail"
         android:layout_width="wrap_content"
@@ -104,9 +105,17 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/profileName" />
+    <TextView
+        android:id="@+id/profileCity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Город Москва"
+        android:textSize="16sp"
+        android:textStyle="italic"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/profileEmail" />
 
-
-    <!-- Кнопка для выхода из аккаунта -->
     <Button
         android:id="@+id/logoutButton"
         android:layout_width="0dp"
@@ -123,9 +132,10 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="Войти"
+
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/ine"
+        app:layout_constraintTop_toBottomOf="@id/support"
         android:layout_marginTop="16dp"
         android:layout_marginBottom="16dp" />
 
@@ -136,15 +146,27 @@
         android:text="Техническая поддержка Your Velocirapror Flowers"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/profileEmail" />
+        app:layout_constraintTop_toBottomOf="@+id/profileCity" />
+    <Button
+        android:id="@+id/ResetLocationButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Измененить местопроживание"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/logoutButton"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"/>
     <Button
         android:id="@+id/addButton"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="Добавить"
+
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/logoutButton"
+        app:layout_constraintTop_toBottomOf="@id/ResetLocationButton"
         android:layout_marginTop="16dp"
         android:layout_marginBottom="16dp"/>
     <Button

@@ -20,6 +20,9 @@ android {
     viewBinding {
         enable = true
     }
+    buildFeatures {
+        dataBinding = true
+    }
     buildTypes {
         release {
             isMinifyEnabled = false
@@ -36,7 +39,11 @@ android {
 }
 
 dependencies {
+    implementation ("com.squareup.okhttp3:okhttp:4.9.1")
+    implementation ("com.squareup.okhttp3:logging-interceptor:4.9.1")
+
     implementation("androidx.work:work-runtime-ktx:2.7.1")
+    implementation("com.android.volley:volley:1.2.1")
 
     implementation("com.jpardogo.googleprogressbar:library:1.2.0")
     implementation(platform("com.google.firebase:firebase-bom:32.8.1"))

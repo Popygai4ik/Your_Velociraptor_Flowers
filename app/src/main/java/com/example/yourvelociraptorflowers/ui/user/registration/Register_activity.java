@@ -2,6 +2,7 @@ package com.example.yourvelociraptorflowers.ui.user.registration;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
@@ -19,7 +20,6 @@ public class Register_activity extends AppCompatActivity {
 
     private RegisterActivityBinding binding;
 
-
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,10 +30,19 @@ public class Register_activity extends AppCompatActivity {
             onBackPressed();
         });
     }
-    public boolean validateFields(String imifam, String email, String password) {
+
+    public boolean validateFields(String imifam, String city, String email, String password) {
         boolean isValid = true;
         if (imifam.isEmpty()) {
             binding.imifam.setError("Имя не должно быть пустым");
+            isValid = false;
+        }
+
+        if (city.isEmpty()) {
+            binding.city.setError("Город не должен быть пустым");
+            isValid = false;
+        } else if (!isValidCity(city)) {
+            binding.city.setError("Некорректный город");
             isValid = false;
         }
 
@@ -53,25 +62,25 @@ public class Register_activity extends AppCompatActivity {
 
         if (!containsUpperCase(password)) {
             Toast.makeText(this, "Пароль должен содержать хотя бы одну заглавную букву", Toast.LENGTH_SHORT).show();
-
             isValid = false;
         }
 
         if (!containsLowerCase(password)) {
             Toast.makeText(this, "Пароль должен содержать хотя бы одну строчную букву", Toast.LENGTH_SHORT).show();
-
             isValid = false;
         }
 
         if (!containsSpecialChar(password)) {
             Toast.makeText(this, "Пароль должен содержать хотя бы один специальный символ", Toast.LENGTH_SHORT).show();
-
             binding.passwordField.setError("Пароль должен содержать хотя бы один специальный символ");
             isValid = false;
         }
 
-
         return isValid;
+    }
+
+    private boolean isValidCity(String city) {
+        return city.matches("[a-zA-Zа-яА-Я\\s]+");
     }
 
     private boolean isValidEmail(String email) {
@@ -100,20 +109,22 @@ public class Register_activity extends AppCompatActivity {
 
     private void loginwithEmail() {
         String ime = binding.imifam.getText().toString();
+        String city = binding.city.getText().toString();
         String email = binding.emailField.getText().toString();
         String password = binding.passwordField.getText().toString();
         Boolean vozrst = binding.radioButton.isChecked();
-        if (validateFields(ime, email, password)) {
-            signinFirebase(ime, email, password, vozrst);
+        if (validateFields(ime, city, email, password)) {
+            signinFirebase(ime, city, email, password, vozrst);
         }
     }
-    private void signinFirebase(String ime, String email, String password, Boolean vozrst) {
+
+    private void signinFirebase(String ime, String city, String email, String password, Boolean vozrst) {
         FirebaseAuth.getInstance().createUserWithEmailAndPassword(email, password)
                 .addOnSuccessListener(authResult -> {
                     FirebaseFirestore firestore = FirebaseFirestore.getInstance();
                     ArrayList<String> moisFlowers = new ArrayList<>();
                     ArrayList<String> notifications = new ArrayList<>();
-                    User newUser = new User(authResult.getUser().getUid(),authResult.getUser().getUid(), ime, email, password, vozrst, moisFlowers, notifications);
+                    User newUser = new User(authResult.getUser().getUid(), authResult.getUser().getUid(), ime, email, password, vozrst, moisFlowers, notifications, city);
                     firestore.collection("users")
                             .document(authResult.getUser().getUid())
                             .set(newUser);
@@ -123,14 +134,8 @@ public class Register_activity extends AppCompatActivity {
                     finish();
                 })
                 .addOnFailureListener(e -> {
-                    Toast.makeText(this, "Login error: " + e.getMessage(), Toast.LENGTH_SHORT).show();
-                })
-                .addOnFailureListener(e -> {
-                    Toast.makeText(this, "SignIn error: " + email+" "+password, Toast.LENGTH_SHORT).show();
-
-                    Toast.makeText(this, "SignIn error: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, "Ошибка при регистрации: " + e.getMessage()+"\nПопробуйте ещё раз или напишите в нашу поддержку!🆘", Toast.LENGTH_SHORT).show();
+                    Log.wtf("Login error", e.getMessage());
                 });
-
-
     }
 }

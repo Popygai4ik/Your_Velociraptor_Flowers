@@ -7,16 +7,16 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.yourvelociraptorflowers.databinding.ResetPasswordBinding;
+import com.example.yourvelociraptorflowers.databinding.ResetPasswordActivityBinding;
 import com.example.yourvelociraptorflowers.ui.MainActivity;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class PasswordResetActivity extends AppCompatActivity {
-    private ResetPasswordBinding binding;
+    private ResetPasswordActivityBinding binding;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = ResetPasswordBinding.inflate(getLayoutInflater());
+        binding = ResetPasswordActivityBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         binding.backButton.setOnClickListener(v -> {
             onBackPressed();

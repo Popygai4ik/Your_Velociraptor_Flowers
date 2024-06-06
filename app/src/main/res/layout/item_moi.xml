@@ -76,18 +76,29 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/delitButton" />
 
-        <ImageButton
+<!--        <ImageButton-->
+<!--            android:id="@+id/illuminationButton"-->
+<!--            android:layout_width="50dp"-->
+<!--            android:layout_height="50dp"-->
+<!--            android:background="?android:attr/selectableItemBackground"-->
+<!--            android:padding="12dp"-->
+<!--            android:scaleType="fitCenter"-->
+<!--            -->
+<!--            android:src="@drawable/free_icon_illumination_5789137"-->
+<!--            app:layout_constraintEnd_toStartOf="@+id/delitButton"-->
+<!--            app:layout_constraintStart_toEndOf="@+id/moreButton"-->
+<!--            app:layout_constraintTop_toTopOf="@+id/delitButton" />-->
+        <Button
             android:id="@+id/illuminationButton"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:background="?android:attr/selectableItemBackground"
-            android:padding="12dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
             android:scaleType="fitCenter"
-
             android:src="@drawable/free_icon_illumination_5789137"
-            app:layout_constraintEnd_toStartOf="@+id/delitButton"
-            app:layout_constraintStart_toEndOf="@+id/moreButton"
-            app:layout_constraintTop_toTopOf="@+id/delitButton" />
+            android:text="Проверка освещенности растения"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/moreButton" />
 
         <Button
             android:id="@+id/delitButton"

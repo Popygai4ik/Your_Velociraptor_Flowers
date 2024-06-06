@@ -16,7 +16,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import com.example.yourvelociraptorflowers.databinding.SearchActivitiBinding;
 import com.example.yourvelociraptorflowers.domain.Allplants.PlantsAdapter;
 import com.example.yourvelociraptorflowers.model.plant.Plants;
-import com.example.yourvelociraptorflowers.ui.addnewplants.useradd.Add_new_plant_user;
+import com.example.yourvelociraptorflowers.ui.plants.addnewplants.useradd.Add_new_plant_user;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 

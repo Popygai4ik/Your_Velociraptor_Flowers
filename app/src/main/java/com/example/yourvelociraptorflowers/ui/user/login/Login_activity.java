@@ -7,19 +7,19 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.yourvelociraptorflowers.databinding.ActivityCustomBinding;
+import com.example.yourvelociraptorflowers.databinding.ActivityLoginBinding;
 import com.example.yourvelociraptorflowers.ui.MainActivity;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class Login_activity extends AppCompatActivity {
 
-    private ActivityCustomBinding binding;
+    private ActivityLoginBinding binding;
 
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = ActivityCustomBinding.inflate(getLayoutInflater());
+        binding = ActivityLoginBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         binding.loginEmail.setOnClickListener(v -> loginwithEmail());
         binding.backButton.setOnClickListener(v -> {
@@ -33,11 +33,11 @@ public class Login_activity extends AppCompatActivity {
     }
     public Boolean validateFields(String email, String password) {
         if (!email.contains("@")) {
-            binding.emailField.setError("Wrong email");
+            binding.emailField.setError("Некорректный email");
             return false;
         }
         if (password.isEmpty()) {
-            binding.passwordField.setError("Password should not be empty");
+            binding.passwordField.setError("Некорректный пароль");
             return false;
         }
         return true;
@@ -58,12 +58,7 @@ public class Login_activity extends AppCompatActivity {
                     finish();
                 })
                 .addOnFailureListener(e -> {
-                    Toast.makeText(this, "Login error: " + e.getMessage(), Toast.LENGTH_SHORT).show();
-                })
-                .addOnFailureListener(e -> {
-                    Toast.makeText(this, "SignIn error: " + email+" "+password, Toast.LENGTH_SHORT).show();
-
-                    Toast.makeText(this, "SignIn error: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, "Ошибка входа: " + e.getMessage() + "\nПопробуйте ещё раз или напишите в нашу поддержку!🆘", Toast.LENGTH_SHORT).show();
                 });
 
 

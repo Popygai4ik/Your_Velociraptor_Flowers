@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageButton
+        android:id="@+id/backButton"
+        android:layout_width="49dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:background="?android:attr/selectableItemBackground"
+        android:padding="12dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/free_icon_back_arrow_594564"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@id/backButton"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <EditText
+                android:id="@+id/editTextName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Имя"
+                android:maxLines="1" />
+
+            <EditText
+                android:id="@+id/editTextDescriptionKratkoe"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Кратокое описание"
+                android:maxLines="1" />
+
+            <EditText
+                android:id="@+id/editTextDescriptionTemp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Температурные условия"
+                android:maxLines="1" />
+
+            <EditText
+                android:id="@+id/editTextDescriptionVlag"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Кратокое описание влажности"
+                android:maxLines="1" />
+
+            <EditText
+                android:id="@+id/editTextDescriptionVrsh"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Кратокое описание выращивания"
+                android:maxLines="1" />
+
+            <EditText
+                android:id="@+id/editTextUTUB"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Видео"
+                android:maxLines="1" />
+
+            <EditText
+                android:id="@+id/editTextGlav_ris"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Главное фото"
+                android:maxLines="1" />
+
+            <EditText
+                android:id="@+id/editText_ris2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Фото2"
+                android:maxLines="1" />
+
+            <EditText
+                android:id="@+id/editText_ris3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Фото3"
+                android:maxLines="1" />
+
+            <EditText
+                android:id="@+id/editText_ris4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Фото4"
+                android:maxLines="1" />
+            <EditText
+                android:id="@+id/editText_koofesiant_poliva"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="koofesiant_poliva"
+                android:maxLines="1" />
+            <EditText
+                android:id="@+id/editText_coefficient_illumination"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="coefficient_illumination"
+                android:maxLines="1" />
+
+            <Button
+                android:id="@+id/buttonAddPlant"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="Add Plant" />
+        </LinearLayout>
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

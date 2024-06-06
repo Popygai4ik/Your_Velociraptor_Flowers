@@ -21,6 +21,7 @@ import com.example.yourvelociraptorflowers.model.plant.Plants;
 import com.example.yourvelociraptorflowers.ui.notifications.NotificationsActivity;
 import com.example.yourvelociraptorflowers.ui.plants.search.Search_activity;
 import com.example.yourvelociraptorflowers.ui.user.viewing.User_profile;
+import com.example.yourvelociraptorflowers.ui.weather.WeatherActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -46,7 +47,24 @@ public class Moi_tviti_Fragment extends Fragment {
 
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        if (FirebaseAuth.getInstance().getCurrentUser() != null) {
+            binding.weatherButton.setVisibility(View.VISIBLE);
+        }else {
+            binding.weatherButton.setVisibility(View.GONE);
+        }
+        binding.weatherButton.setOnClickListener(v -> {
+            Intent intent = new Intent(requireContext(), WeatherActivity.class);
+            FirebaseFirestore firestore = FirebaseFirestore.getInstance();
+            firestore.collection("users").document(FirebaseAuth.getInstance().getCurrentUser().getUid())
+                    .get()
+                    .addOnSuccessListener(documentSnapshot -> {
+                        documentSnapshot.get("city");
+                        intent.putExtra("city", documentSnapshot.get("city").toString());
+                        startActivity(intent);
+                    })
+                    .addOnFailureListener(e -> Toast.makeText(requireContext(), "Ошибка с городом!", Toast.LENGTH_SHORT).show());
 
+        });
         binding.profileButton.setOnClickListener(v -> {
             Intent intent = new Intent(requireContext(), User_profile.class);
             startActivity(intent);

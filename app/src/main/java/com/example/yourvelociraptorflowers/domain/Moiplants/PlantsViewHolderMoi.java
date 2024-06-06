@@ -105,6 +105,7 @@ public class PlantsViewHolderMoi extends ViewHolder {
                     .load(item.getResinok())
                     .placeholder(R.mipmap.ic_launcher)
                     .into(binding.resinok);
+            binding.illuminationButton.setText("Проверить освещенность для " + item.getName() + " \uD83D\uDE0E");
             // Set Listener
             binding.moreButton.setOnClickListener(v -> {
                 Intent intent = new Intent(itemView.getContext(), MoreDetailedActivity.class);

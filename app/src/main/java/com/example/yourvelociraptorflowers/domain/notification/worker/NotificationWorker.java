@@ -20,7 +20,9 @@ import androidx.work.WorkManager;
 import androidx.work.Worker;
 import androidx.work.WorkerParameters;
 
+import com.android.volley.RequestQueue;
 import com.example.yourvelociraptorflowers.R;
+import com.example.yourvelociraptorflowers.domain.notification.weather.WeatherNotificationManager;
 import com.example.yourvelociraptorflowers.model.plant.Plants;
 import com.example.yourvelociraptorflowers.model.notification.Notify;
 import com.example.yourvelociraptorflowers.ui.MainActivity;
@@ -45,6 +47,7 @@ import java.util.concurrent.TimeUnit;
 public class NotificationWorker extends Worker {
 
     private FirebaseAuth mAuth;
+    private RequestQueue requestQueue;
     private FirebaseFirestore firestore;
 
     public NotificationWorker(@NonNull Context context, @NonNull WorkerParameters workerParams) {
@@ -56,6 +59,10 @@ public class NotificationWorker extends Worker {
     @NonNull
     @Override
     public Result doWork() {
+
+
+
+
         if (mAuth.getCurrentUser() != null) {
             CountDownLatch latch = new CountDownLatch(1);
             DocumentReference userRef = firestore.collection("users").document(mAuth.getCurrentUser().getUid());
@@ -123,6 +130,58 @@ public class NotificationWorker extends Worker {
             channel.setSound(null, null); // Отключение звука
             notificationManager.createNotificationChannel(channel);
         }
+
+
+        if (mAuth.getCurrentUser() != null) {
+            SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+            boolean notificationsEnabled = preferences.getBoolean("notifications_shown_weather", false); // Check the state
+            if (notificationsEnabled) {
+                WeatherNotificationManager notificationManager2 = new WeatherNotificationManager(getApplicationContext(), mAuth.getCurrentUser().getUid());
+                FirebaseFirestore firestore = FirebaseFirestore.getInstance();
+                firestore.collection("users").document(mAuth.getCurrentUser().getUid()).get().addOnSuccessListener(documentSnapshot -> {
+                    if (documentSnapshot.exists()) {
+                        String city = (String) documentSnapshot.get("city");
+                        if (city != null && !city.isEmpty()) {
+                            Calendar calendar = Calendar.getInstance();
+                            int currentHour = calendar.get(Calendar.HOUR_OF_DAY);
+                            boolean notificationSentToday = preferences.getBoolean("notification_sent_today", false);
+                            // Reset notification_sent_today if it's a new day
+                            if (!isSameDay(System.currentTimeMillis(), preferences.getLong("last_notification_time", 0))) {
+                                SharedPreferences.Editor editor = preferences.edit();
+                                editor.putBoolean("notification_sent_today", false);
+                                editor.apply();
+                            }
+                            if (currentHour >= 12 && !notificationSentToday) {
+                                notificationManager2.showDailyWeatherNotification(getApplicationContext(), city);
+                                SharedPreferences.Editor editor = preferences.edit();
+                                editor.putBoolean("notification_sent_today", true);
+                                editor.putLong("last_notification_time", System.currentTimeMillis());
+                                editor.apply();
+                                notificationManager2.fetchWeatherData(context, city);
+                                Log.wtf("LOGG", "City: " + city + " Notification sent today: " + notificationSentToday);
+                            } else {
+                                Log.wtf("LOGG", "Notification already sent today or it's not past 12:00");
+                            }
+                        } else {
+                            Log.wtf("LOGG", "City is not specified");
+                        }
+                    } else {
+                        Log.wtf("LOGGING", "User document does not exist");
+                    }
+                }).addOnFailureListener(e -> {
+                    Log.e("Firestore", "Error getting user data", e);
+                });
+            } else {
+                Log.wtf("LOGGING", "Notifications are not enabled");
+            }
+        }
+
+
+// Function to check if two timestamps are on the same day
+
+
+
+
 
         ArrayList<String> notificationLines = new ArrayList<>();
         long currentTime = System.currentTimeMillis();
@@ -295,10 +354,13 @@ public class NotificationWorker extends Worker {
 
             PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
 
+            NotificationCompat.BigTextStyle bigTextStyle = new NotificationCompat.BigTextStyle()
+                    .bigText(notificationText.toString());
+
             Notification notification = new NotificationCompat.Builder(context, "my_channel_for_poliv")
                     .setSmallIcon(R.mipmap.ic_notification)
                     .setContentTitle("💧 Вам нужно поливать:")
-                    .setStyle(new NotificationCompat.BigTextStyle().bigText(notificationText.toString()))
+                    .setStyle(bigTextStyle)
                     .setOngoing(true) // делает уведомление неотключаемым
                     .setSound(null)   // отключение звука для уведомления
                     .setAutoCancel(false) // уведомление не удаляется при нажатии
@@ -308,10 +370,17 @@ public class NotificationWorker extends Worker {
 
             notification.flags |= Notification.FLAG_NO_CLEAR; // делает уведомление неотключаемым
             notificationManager.notify(1, notification);
-        }
+        }}
+    private boolean isSameDay(long time1, long time2) {
+        Calendar cal1 = Calendar.getInstance();
+        cal1.setTimeInMillis(time1);
+        Calendar cal2 = Calendar.getInstance();
+        cal2.setTimeInMillis(time2);
+        return cal1.get(Calendar.YEAR) == cal2.get(Calendar.YEAR) &&
+                cal1.get(Calendar.DAY_OF_YEAR) == cal2.get(Calendar.DAY_OF_YEAR);
     }
 
-    private void scheduleNextWork() {
+        private void scheduleNextWork() {
         OneTimeWorkRequest nextWorkRequest = new OneTimeWorkRequest.Builder(NotificationWorker.class)
                 .setInitialDelay(1, TimeUnit.MINUTES)
                 .build();

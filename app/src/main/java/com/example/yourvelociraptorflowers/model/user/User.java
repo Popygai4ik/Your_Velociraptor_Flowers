@@ -14,11 +14,12 @@ public class User {
 
     public ArrayList<String> moisFlowers;
     public ArrayList<String> notifications;
+    String city;
     public User() {
 
     }
 
-    public User(String userId, String uid, String name, String email, String password, Boolean vozrst, ArrayList<String> moisFlowers, ArrayList<String> notifications) {
+    public User(String userId, String uid, String name, String email, String password, Boolean vozrst, ArrayList<String> moisFlowers, ArrayList<String> notifications, String city) {
         this.vozrst = vozrst;
         this.userId = userId;
         this.uid = uid;
@@ -27,6 +28,7 @@ public class User {
         this.password = password;
         this.moisFlowers = moisFlowers;
         this.notifications = notifications;
+        this.city = city;
     }
 
     public ArrayList<String> getNotifications() {
@@ -86,5 +88,12 @@ public class User {
     }
     public void setMoisFlowers(ArrayList<String> moisFlowers) {
         this.moisFlowers = moisFlowers;
+    }
+
+    public String getCity() {
+        return city;
+    }
+    public void setCity(String city) {
+        this.city = city;
     }
 }

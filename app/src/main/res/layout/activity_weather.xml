@@ -1,0 +1,212 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+
+    xmlns:gbp="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <!-- Привязка данных, если потребуется -->
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="16dp">
+
+        <ImageButton
+            android:id="@+id/backButton"
+            android:layout_width="49dp"
+            android:background="?android:attr/selectableItemBackground"
+            android:layout_height="50dp"
+            android:padding="12dp"
+            android:layout_marginStart="16dp"
+            android:layout_gravity="center"
+            android:scaleType="fitCenter"
+            android:src="@drawable/free_icon_back_arrow_594564"/>
+
+        <TextView
+            android:id="@+id/cityTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Город"
+            android:gravity="center"
+            android:layout_centerHorizontal="true"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:layout_marginTop="16dp"/>
+
+        <!-- ScrollView для прокрутки содержимого -->
+        <ScrollView
+            android:id="@+id/ScrollView"
+            android:layout_below="@id/cityTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/errorLayout">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:gravity="center_horizontal">
+
+                <TextView
+                    android:gravity="center"
+                    android:id="@+id/temperatureTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Температура: "
+                    android:textSize="18sp"
+                    android:layout_marginTop="16dp"/>
+
+                <TextView
+                    android:gravity="center"
+                    android:id="@+id/humidityTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Влажность: "
+                    android:textSize="18sp"
+                    android:layout_marginTop="8dp"/>
+
+                <TextView
+                    android:gravity="center"
+                    android:id="@+id/windSpeedTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Скорость ветра: "
+                    android:textSize="18sp"
+                    android:layout_marginTop="8dp"/>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/avatarCard"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    app:cardCornerRadius="10dp"
+                    android:layout_marginTop="16dp">
+
+                    <ImageView
+                        android:id="@+id/weatherIcon"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/ic_default_weather" />
+
+                </com.google.android.material.card.MaterialCardView>
+
+                <TextView
+                    android:id="@+id/temperatureTomorrowTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="Температура завтра: "
+                    android:textSize="18sp"
+                    android:layout_marginTop="16dp"/>
+
+                <TextView
+                    android:gravity="center"
+                    android:id="@+id/humidityTomorrowTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Влажность завтра: "
+                    android:textSize="18sp"
+                    android:layout_marginTop="8dp"/>
+
+                <TextView
+                    android:gravity="center"
+                    android:id="@+id/windSpeedTomorrowTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Скорость ветра завтра: "
+                    android:textSize="18sp"
+                    android:layout_marginTop="8dp"/>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/avatarCard23"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    app:cardCornerRadius="10dp"
+                    android:layout_marginTop="16dp">
+
+                    <ImageView
+                        android:id="@+id/weatherIconTomorrow"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/ic_default_weather" />
+
+                </com.google.android.material.card.MaterialCardView>
+
+                <TextView
+                    android:gravity="center"
+                    android:id="@+id/adviceTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Совет дня: "
+                    android:textSize="18sp"
+                    android:layout_margin="10dp"
+                    android:layout_marginTop="16dp"/>
+
+                <TextView
+                    android:gravity="center"
+                    android:id="@+id/subscriptionTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Согласие на уведомление с советом дня:"
+                    android:textSize="18sp"
+                    android:layout_margin="10dp"
+                    android:layout_marginTop="16dp"/>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/changetheconsentButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Изменить cогласие!"
+                    android:layout_marginTop="16dp"/>
+
+            </LinearLayout>
+        </ScrollView>
+
+        <!-- Разметка для отображения ошибки -->
+        <LinearLayout
+            android:id="@+id/errorLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:visibility="gone">
+
+            <ImageView
+                android:id="@+id/errorImage"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:src="@drawable/ic_error" />
+
+            <TextView
+                android:id="@+id/errorMessage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Идёт загрузка или произошла ошибка при загрузке данных. Попробуйте поменять местоположение!"
+                android:textSize="18sp"
+                android:layout_marginTop="16dp"/>
+
+            <com.jpardogo.android.googleprogressbar.library.GoogleProgressBar
+                android:id="@+id/progressBar"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:layout_margin="10dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="10dp"
+                gbp:type="chrome_floating_circles" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/retryButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Изменить местоположение"
+                android:layout_marginTop="16dp" />
+
+
+        </LinearLayout>
+
+    </RelativeLayout>
+</layout>

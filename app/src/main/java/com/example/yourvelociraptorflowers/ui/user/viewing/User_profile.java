@@ -11,7 +11,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.bumptech.glide.Glide;
 import com.example.yourvelociraptorflowers.R;
 import com.example.yourvelociraptorflowers.databinding.ActivityProvileBinding;
-import com.example.yourvelociraptorflowers.ui.addnewplants.adminadd.Add_new_plant;
+import com.example.yourvelociraptorflowers.ui.fragment.Vse_tviti_Fragment;
+import com.example.yourvelociraptorflowers.ui.plants.addnewplants.adminadd.Add_new_plant;
+import com.example.yourvelociraptorflowers.ui.user.location.ResetLocationActivity;
 import com.example.yourvelociraptorflowers.ui.user.login.Login_activity;
 import com.example.yourvelociraptorflowers.ui.user.registration.Register_activity;
 import com.example.yourvelociraptorflowers.ui.user.support.SupportActivityNotRegistered;
@@ -47,8 +49,11 @@ public class User_profile extends AppCompatActivity {
         binding.backButton.setOnClickListener(v -> {
             onBackPressed();
         });
+
         FirebaseUser currentUser = mAuth.getCurrentUser();
         if (currentUser != null) {
+            binding.ResetLocationButton.setVisibility(View.VISIBLE);
+
             binding.support.setOnClickListener(v -> {
                 Intent intent = new Intent(this, SupportActivityRegistered.class);
                 startActivity(intent);
@@ -65,6 +70,14 @@ public class User_profile extends AppCompatActivity {
                                 if (userName != null) {
                                     binding.profileName.setVisibility(View.VISIBLE);
                                     binding.profileName.setText(userName);
+                                    binding.profileCity.setVisibility(View.VISIBLE);
+                                    binding.profileCity.setText(document.getString("city"));
+                                    binding.ResetLocationButton.setOnClickListener(v -> {
+                                        Intent intent = new Intent(this, ResetLocationActivity.class);
+                                        intent.putExtra("city", binding.profileCity.getText().toString());
+                                        startActivity(intent);
+                                    });
+
                                     firestore.collection("users").document("admin").get().addOnCompleteListener(
                                             task1 -> {
                                                 if (task1.isSuccessful()) {
@@ -95,12 +108,13 @@ public class User_profile extends AppCompatActivity {
                                     }
                                 }
                             } else {
-                                Toast.makeText(this, "No such document", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(this, "Такого пользователя не существует, пожалуйста обратитесь в службу поддержки!", Toast.LENGTH_SHORT).show();
                             }
                         } else {
-                            Toast.makeText(this, "get failed with", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(this, "Произошла ошибка при получении информации, пожалуйста обратитесь в службу поддержки!" + "\n Код ошибки:" + task.getException(), Toast.LENGTH_SHORT).show();
                         }
                     });
+
             binding.addButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -132,7 +146,9 @@ public class User_profile extends AppCompatActivity {
                 Intent intent = new Intent(this, SupportActivityNotRegistered.class);
                 startActivity(intent);
             });
-            // Пользователь не залогинен
+            binding.profileCity.setVisibility(View.INVISIBLE);
+            binding.ResetLocationButton.setVisibility(View.INVISIBLE);
+                    // Пользователь не залогинен
             binding.profileName.setVisibility(View.INVISIBLE);
             binding.ne.setVisibility(View.VISIBLE);
             binding.ine.setVisibility(View.VISIBLE);
