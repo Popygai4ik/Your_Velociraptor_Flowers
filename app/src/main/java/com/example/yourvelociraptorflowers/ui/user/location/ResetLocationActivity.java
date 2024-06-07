@@ -11,6 +11,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.yourvelociraptorflowers.databinding.ActivityProvileBinding;
 import com.example.yourvelociraptorflowers.databinding.ResetLocationActivityBinding;
+import com.example.yourvelociraptorflowers.ui.MainActivity;
+import com.example.yourvelociraptorflowers.ui.user.name.ResetNameActivity;
 import com.example.yourvelociraptorflowers.ui.user.viewing.User_profile;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
@@ -55,7 +57,8 @@ public class ResetLocationActivity extends AppCompatActivity {
                                             .update(update)
                                             .addOnSuccessListener(aVoid -> {
                                                 Toast.makeText(this, "Город изменен на: " + city1, Toast.LENGTH_SHORT).show();
-                                                onBackPressed();
+                                                Intent intent1 = new Intent(this, MainActivity.class);
+                                                startActivity(intent1);
                                             })
                                             .addOnFailureListener(e -> {
                                                 Toast.makeText(this, "Ошибка обновления города", Toast.LENGTH_SHORT).show();

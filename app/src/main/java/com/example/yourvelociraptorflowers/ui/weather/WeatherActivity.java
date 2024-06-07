@@ -71,6 +71,12 @@ public class WeatherActivity extends AppCompatActivity {
             showNotificationDialog();
         }
 
+        binding.changetheconsentButton.setOnClickListener(v -> {
+            Intent intent = new Intent(WeatherActivity.this, ChangeConsentActivity.class);
+            intent.putExtra("city", getIntent().getStringExtra("city"));
+            startActivity(intent);
+        });
+
 
         String city = getIntent().getStringExtra("city");
         if (city != null) {

@@ -24,6 +24,7 @@ import com.example.yourvelociraptorflowers.domain.notification.worker.Notificati
 import com.example.yourvelociraptorflowers.ui.fragment.Moi_tviti_Fragment;
 import com.example.yourvelociraptorflowers.ui.fragment.Vse_tviti_Fragment;
 import com.example.yourvelociraptorflowers.ui.start.WelcomeActivity;
+import com.example.yourvelociraptorflowers.ui.weather.WeatherActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -86,7 +87,13 @@ public class MainActivity extends AppCompatActivity {
         if (getIntent() != null && "Moi_tviti_Fragment".equals(getIntent().getStringExtra("fragment"))) {
             replaceFragment(new Moi_tviti_Fragment());
             binding.BottomNavigationView.setSelectedItemId(R.id.moi_tvti);
-        } else {
+        } else if (getIntent() != null && "weather".equals(getIntent().getStringExtra("fragment"))) {
+            Intent intent = new Intent(this, WeatherActivity.class);
+            intent.putExtra("city", getIntent().getStringExtra("city"));
+            startActivity(intent);
+
+        }
+        else {
             // Открыть начальный фрагмент по умолчанию
             replaceFragment(new Vse_tviti_Fragment());
             binding.BottomNavigationView.setSelectedItemId(R.id.vse_tvti);

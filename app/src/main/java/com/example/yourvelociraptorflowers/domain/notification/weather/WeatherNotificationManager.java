@@ -117,7 +117,7 @@ public class WeatherNotificationManager {
                                         "Совет дня: " + advice;
 
                                 // Отображаем уведомление
-                                showNotification(context, notificationText);
+                                showNotification(context, notificationText, city);
 
                                 // Сохраняем уведомление в Firestore
                                 saveNotificationToFirestore(notificationText);
@@ -129,6 +129,14 @@ public class WeatherNotificationManager {
                         }
                     } catch (JSONException e) {
                         Log.e("WeatherNotification", "JSON parsing error", e);
+
+                        String notificationText = "Произошла ошибка при получении данных погоды.\nПожалуйста, попробуйте проверить правильность города проживания.";
+
+                        // Отображаем уведомление
+                        showNotification(context, notificationText, city);
+
+                        // Сохраняем уведомление в Firestore
+                        saveNotificationToFirestore(notificationText);
                     }
                 },
                 error -> Log.e("WeatherNotification", "Volley error", error)
@@ -136,6 +144,7 @@ public class WeatherNotificationManager {
 
         Volley.newRequestQueue(context).add(jsonObjectRequestForecast);
     }
+
 
 
 
@@ -174,22 +183,22 @@ public class WeatherNotificationManager {
                 .addOnFailureListener(e -> {
                     Log.e("NotificationWorker", "Error getting user notifications", e);
                 });
-        Map<String, Object> notification = new HashMap<>();
-        notification.put("title", "😎 Ежедневный совет на основе погоды 😎");
-        notification.put("text", notificationText);
-        notification.put("timestamp", System.currentTimeMillis());
-
-        firestore.collection("users")
-                .document(userId)
-                .collection("notifications")
-                .add(notification)
-                .addOnSuccessListener(documentReference -> {
-                    Log.wtf("LOGGING", "DocumentSnapshot added with ID: " + documentReference.getId());
-                })
-                .addOnFailureListener(e -> {
-                    // Ошибка при добавлении
-                    e.printStackTrace();
-                });
+//        Map<String, Object> notification = new HashMap<>();
+//        notification.put("title", "😎 Ежедневный совет на основе погоды 😎");
+//        notification.put("text", notificationText);
+//        notification.put("timestamp", System.currentTimeMillis());
+//
+//        firestore.collection("users")
+//                .document(userId)
+//                .collection("notifications")
+//                .add(notification)
+//                .addOnSuccessListener(documentReference -> {
+//                    Log.wtf("LOGGING", "DocumentSnapshot added with ID: " + documentReference.getId());
+//                })
+//                .addOnFailureListener(e -> {
+//                    // Ошибка при добавлении
+//                    e.printStackTrace();
+//                });
     }
 
     public String generateAdvice(String weatherDescription, double temperature) {
@@ -247,7 +256,7 @@ public class WeatherNotificationManager {
         return advice;
     }
 
-    public void showNotification(Context context, String text) {
+    public void showNotification(Context context, String text, String city) {
         NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
@@ -255,7 +264,8 @@ public class WeatherNotificationManager {
             notificationManager.createNotificationChannel(channel);
         }
         Intent intent = new Intent(context, MainActivity.class);
-        intent.putExtra("fragment", "Moi_tviti_Fragment");
+        intent.putExtra("fragment", "weather");
+        intent.putExtra("city", city);
         intent.setAction(Intent.ACTION_MAIN);
         intent.addCategory(Intent.CATEGORY_LAUNCHER);
         PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
@@ -268,7 +278,9 @@ public class WeatherNotificationManager {
                 .setStyle(new NotificationCompat.BigTextStyle().bigText(text))
                 .setAutoCancel(true)
                 .setContentIntent(pendingIntent)
+                .setPriority(NotificationCompat.PRIORITY_MAX) // Set notification priority to maximum
                 .build();
+
 
         notificationManager.notify(101, notification);
     }

@@ -13,8 +13,10 @@ import com.example.yourvelociraptorflowers.R;
 import com.example.yourvelociraptorflowers.databinding.ActivityProvileBinding;
 import com.example.yourvelociraptorflowers.ui.fragment.Vse_tviti_Fragment;
 import com.example.yourvelociraptorflowers.ui.plants.addnewplants.adminadd.Add_new_plant;
+import com.example.yourvelociraptorflowers.ui.user.email.ChangeEmailActivity;
 import com.example.yourvelociraptorflowers.ui.user.location.ResetLocationActivity;
 import com.example.yourvelociraptorflowers.ui.user.login.Login_activity;
+import com.example.yourvelociraptorflowers.ui.user.name.ResetNameActivity;
 import com.example.yourvelociraptorflowers.ui.user.registration.Register_activity;
 import com.example.yourvelociraptorflowers.ui.user.support.SupportActivityNotRegistered;
 import com.example.yourvelociraptorflowers.ui.user.support.SupportActivityRegistered;
@@ -52,7 +54,9 @@ public class User_profile extends AppCompatActivity {
 
         FirebaseUser currentUser = mAuth.getCurrentUser();
         if (currentUser != null) {
+            binding.ResetNameButton.setVisibility(View.VISIBLE);
             binding.ResetLocationButton.setVisibility(View.VISIBLE);
+            binding.ResetEmailButton.setVisibility(View.VISIBLE);
 
             binding.support.setOnClickListener(v -> {
                 Intent intent = new Intent(this, SupportActivityRegistered.class);
@@ -75,6 +79,17 @@ public class User_profile extends AppCompatActivity {
                                     binding.ResetLocationButton.setOnClickListener(v -> {
                                         Intent intent = new Intent(this, ResetLocationActivity.class);
                                         intent.putExtra("city", binding.profileCity.getText().toString());
+                                        startActivity(intent);
+                                    });
+                                    binding.ResetNameButton.setOnClickListener(v -> {
+                                        Intent intent = new Intent(this, ResetNameActivity.class);
+                                        intent.putExtra("name", binding.profileName.getText().toString());
+                                        startActivity(intent);
+                                    });
+
+                                    binding.ResetEmailButton.setOnClickListener(v -> {
+                                        Intent intent = new Intent(this, ChangeEmailActivity.class);
+                                        intent.putExtra("email", document.getString("email"));
                                         startActivity(intent);
                                     });
 
@@ -147,6 +162,9 @@ public class User_profile extends AppCompatActivity {
                 startActivity(intent);
             });
             binding.profileCity.setVisibility(View.INVISIBLE);
+
+            binding.ResetNameButton.setVisibility(View.INVISIBLE);
+            binding.ResetEmailButton.setVisibility(View.INVISIBLE);
             binding.ResetLocationButton.setVisibility(View.INVISIBLE);
                     // Пользователь не залогинен
             binding.profileName.setVisibility(View.INVISIBLE);

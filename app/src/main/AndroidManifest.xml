@@ -63,7 +63,8 @@
         <activity android:name=".ui.user.location.ResetLocationActivity" android:label="ResetLocationActivity"/>
         <activity android:name=".ui.weather.WeatherActivity" android:label="WeatherActivity"/>
         <activity android:name=".ui.weather.ChangeConsentActivity" android:label="ChangeConsentActivity"/>
-
+        <activity android:name=".ui.user.name.ResetNameActivity" android:label="ResetNameActivity"/>
+        <activity android:name=".ui.user.email.ChangeEmailActivity" android:label="ChangeEmailActivity"/>
 
         <receiver android:name=".domain.receiver.PolivAlarmReceiver" />
         <receiver
