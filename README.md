@@ -28,7 +28,19 @@
 
 | О цветке  | Стартовое окно  |
 |:---:|:---:|
-| ![О цветке](screenshots/Screenshot_3.jpg) | ![Стартовое окно](screenshots/Screenshot_4.png) |
+| ![О цветке](screenshots/Screenshot_3.jpg) | ![Стартовое окно](screenshots/Screenshot_4.jpg) |
+
+| Профиль после авторизации   | Статистика аккаунта  |
+|:---:|:---:|
+| ![Профиль после авторизации](screenshots/Screenshot_5.jpg) | ![Стартовое окно](screenshots/Screenshot_6.png) |
+
+| Проверка освещённости  | Запрос на согласие на совет дня по погоде  |
+|:---:|:---:|
+| ![Проверка освещённости](screenshots/Screenshot_7.jpg) | ![Запрос на согласие на совет дня по погоде](screenshots/Screenshot_8.png) |
+
+| Погода и совет дня  | Уведомления  |
+|:---:|:---:|
+| ![Погода и совет дня](screenshots/Screenshot_9.jpg) | ![Уведомления](screenshots/Screenshot_10.png) |
 
 ## Контакты
 
