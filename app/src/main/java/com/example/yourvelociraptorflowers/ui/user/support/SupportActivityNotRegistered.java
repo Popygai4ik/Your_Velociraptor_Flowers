@@ -24,7 +24,7 @@ public class SupportActivityNotRegistered extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.support_activiti_nezaregan);
+        setContentView(R.layout.support_activiti_not_registered);
         emailField = findViewById(R.id.emailField);
         problemField = findViewById(R.id.problemField);
         resetpas = findViewById(R.id.resetpas);

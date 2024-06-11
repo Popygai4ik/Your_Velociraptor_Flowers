@@ -14,7 +14,10 @@ import com.example.yourvelociraptorflowers.ui.MainActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Locale;
 
 public class Register_activity extends AppCompatActivity {
 
@@ -112,19 +115,26 @@ public class Register_activity extends AppCompatActivity {
         String city = binding.city.getText().toString();
         String email = binding.emailField.getText().toString();
         String password = binding.passwordField.getText().toString();
-        Boolean vozrst = binding.radioButton.isChecked();
+        Boolean age = binding.radioButton.isChecked();
         if (validateFields(ime, city, email, password)) {
-            signinFirebase(ime, city, email, password, vozrst);
+            signinFirebase(ime, city, email, password, age);
         }
     }
 
-    private void signinFirebase(String ime, String city, String email, String password, Boolean vozrst) {
+    private void signinFirebase(String ime, String city, String email, String password, Boolean age) {
         FirebaseAuth.getInstance().createUserWithEmailAndPassword(email, password)
                 .addOnSuccessListener(authResult -> {
                     FirebaseFirestore firestore = FirebaseFirestore.getInstance();
                     ArrayList<String> moisFlowers = new ArrayList<>();
                     ArrayList<String> notifications = new ArrayList<>();
-                    User newUser = new User(authResult.getUser().getUid(), authResult.getUser().getUid(), ime, email, password, vozrst, moisFlowers, notifications, city);
+                    long currentTime = System.currentTimeMillis();
+                    Calendar calendar = Calendar.getInstance();
+                    calendar.setTimeInMillis(currentTime);
+                    SimpleDateFormat sdf2 = new SimpleDateFormat("dd MMMM yyyy 'в' HH:mm:ss", Locale.getDefault());
+
+                    String currentTimeNormalFormat = sdf2.format(calendar.getTime());
+
+                    User newUser = new User(authResult.getUser().getUid(), authResult.getUser().getUid(), ime, email, password, age, moisFlowers, notifications, city, currentTimeNormalFormat);
                     firestore.collection("users")
                             .document(authResult.getUser().getUid())
                             .set(newUser);

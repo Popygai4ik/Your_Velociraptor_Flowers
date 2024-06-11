@@ -3,6 +3,7 @@ package com.example.yourvelociraptorflowers.ui.notifications;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -95,6 +96,7 @@ public class NotificationsActivity extends AppCompatActivity {
 
     private void clearAllNotifications() {
         notifyList.clear();
+        Toast.makeText(this, "🗑 Все уведомления удалены! 🗑", Toast.LENGTH_SHORT).show();
         adapter.notifyDataSetChanged();
         updateNotificationsInFirestore();
     }
@@ -106,8 +108,8 @@ public class NotificationsActivity extends AppCompatActivity {
             Map<String, Object> notificationMap = new HashMap<>();
             notificationMap.put("title", notification.getTitle());
             notificationMap.put("message", notification.getMessage());
-            notificationMap.put("timestamp", notification.getTimestamp()); // изменено с "time" на "timestamp"
-            notificationWrapper.put("notification", notificationMap); // Обертываем уведомление внутри объекта "notification"
+            notificationMap.put("timestamp", notification.getTimestamp());
+            notificationWrapper.put("notification", notificationMap);
             notificationsList.add(notificationWrapper);
         }
         firestore.collection("users").document(userId)

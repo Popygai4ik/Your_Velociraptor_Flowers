@@ -33,24 +33,14 @@ public class ChangeEmailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_change_email);
         backButton = findViewById(R.id.backButton);
-        backButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onBackPressed();
-            }
-        });
+
+        backButton.setOnClickListener(v -> onBackPressed());
 
         editTextCurrentPassword = findViewById(R.id.editTextCurrentPassword);
         editTextEmail = findViewById(R.id.editTextEmail);
         buttonChangeEmail = findViewById(R.id.buttonChangeEmail);
         mAuth = FirebaseAuth.getInstance();
-
-        buttonChangeEmail.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                changeEmail();
-            }
-        });
+        buttonChangeEmail.setOnClickListener(v -> changeEmail());
     }
 
     private void changeEmail() {

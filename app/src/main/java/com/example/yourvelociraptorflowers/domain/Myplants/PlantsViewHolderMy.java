@@ -1,17 +1,17 @@
-package com.example.yourvelociraptorflowers.domain.Moiplants;
+package com.example.yourvelociraptorflowers.domain.Myplants;
 
 import android.content.Intent;
-import android.util.Log;
 import android.widget.Toast;
 
 import androidx.recyclerview.widget.RecyclerView.ViewHolder;
 
 import com.bumptech.glide.Glide;
 import com.example.yourvelociraptorflowers.R;
-import com.example.yourvelociraptorflowers.databinding.ItemMoiBinding;
+import com.example.yourvelociraptorflowers.databinding.ItemMyBinding;
 import com.example.yourvelociraptorflowers.model.plant.Plants;
 import com.example.yourvelociraptorflowers.ui.plants.illumination.IlluminationActivity;
 import com.example.yourvelociraptorflowers.ui.plants.podrobnie.MoreDetailedActivity;
+import com.example.yourvelociraptorflowers.ui.plants.question.Activity_Question_For_Expert;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -26,10 +26,10 @@ import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
 
-public class PlantsViewHolderMoi extends ViewHolder {
-    private ItemMoiBinding binding;
+public class PlantsViewHolderMy extends ViewHolder {
+    private ItemMyBinding binding;
 
-    public PlantsViewHolderMoi(ItemMoiBinding binding) {
+    public PlantsViewHolderMy(ItemMyBinding binding) {
         super(binding.getRoot());
         this.binding = binding;
     }
@@ -129,6 +129,11 @@ public class PlantsViewHolderMoi extends ViewHolder {
 //                Log.wtf("LOGG", String.valueOf(item.getCoefficient_illumination()));
                 itemView.getContext().startActivity(intent);
 
+            });
+            binding.questionButton.setOnClickListener(v -> {
+                Intent intent = new Intent(itemView.getContext(), Activity_Question_For_Expert.class);
+                intent.putExtra("name", item.getName());
+                itemView.getContext().startActivity(intent);
             });
             binding.delitButton.setOnClickListener(v -> {
                 FirebaseAuth mAuth = FirebaseAuth.getInstance();

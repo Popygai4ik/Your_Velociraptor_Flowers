@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+    <ImageButton
+        android:id="@+id/backButton"
+        android:layout_width="49dp"
+        android:layout_height="50dp"
+        android:background="?android:attr/selectableItemBackground"
+        android:padding="12dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/free_icon_back_arrow_594564"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+    <ImageView
+        android:id="@+id/ImageView"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/icon_deleteaccount" />
+
+    <TextView
+        android:layout_marginTop="10dp"
+        android:id="@+id/deleteAccountTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Удаление аккаунта"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ImageView" />
+
+    <TextView
+        android:id="@+id/deleteAccountMessage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Вы точно хотите удалить аккаунт?"
+        android:textSize="18sp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintTop_toBottomOf="@id/deleteAccountTitle"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginBottom="32dp"/>
+    <TextView
+        android:id="@+id/deleteAccountMessage2"
+        android:layout_width="wrap_content"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:layout_height="wrap_content"
+        android:text="При удалении аккаунта все связанные с ним данные, включая информацию о следующих поливов ваших растений, будут безвозвратно удалены. Восстановить их будет невозможно. Пожалуйста, убедитесь, что вы уверены в своём поступке, прежде чем принимать это решение."
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/deleteAccountMessage" />
+
+    <Button
+        android:layout_marginTop="10dp"
+        android:id="@+id/deleteAccountButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Удалить аккаунт"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/deleteAccountMessage2" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

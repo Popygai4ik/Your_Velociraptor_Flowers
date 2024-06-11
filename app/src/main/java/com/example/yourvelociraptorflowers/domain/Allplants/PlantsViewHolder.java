@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView.ViewHolder;
 
 import com.bumptech.glide.Glide;
 import com.example.yourvelociraptorflowers.R;
-import com.example.yourvelociraptorflowers.databinding.ItemVseBinding;
+import com.example.yourvelociraptorflowers.databinding.ItemAllBinding;
 import com.example.yourvelociraptorflowers.model.plant.Plants;
 import com.example.yourvelociraptorflowers.ui.plants.podrobnie.MoreDetailedActivity;
 import com.google.firebase.auth.FirebaseAuth;
@@ -26,9 +26,9 @@ import java.util.Map;
 
 public class PlantsViewHolder extends ViewHolder {
 
-    private ItemVseBinding binding;
+    private ItemAllBinding binding;
 
-    public PlantsViewHolder(ItemVseBinding binding) {
+    public PlantsViewHolder(ItemAllBinding binding) {
         super(binding.getRoot());
         this.binding = binding;
     }

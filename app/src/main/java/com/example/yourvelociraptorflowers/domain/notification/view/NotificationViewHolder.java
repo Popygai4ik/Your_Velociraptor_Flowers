@@ -1,6 +1,7 @@
 package com.example.yourvelociraptorflowers.domain.notification.view;
 
 import android.util.Log;
+import android.widget.Toast;
 
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -18,6 +19,7 @@ public class NotificationViewHolder extends RecyclerView.ViewHolder {
             int position = getAdapterPosition();
             if (position != RecyclerView.NO_POSITION) {
                 onDeleteClickListener.onDeleteClick(position);
+                Toast.makeText(binding.getRoot().getContext(), "Уведомление удалено 🗑", Toast.LENGTH_SHORT).show();
 
             }
         });

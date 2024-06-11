@@ -1,4 +1,4 @@
-package com.example.yourvelociraptorflowers.domain.Moiplants;
+package com.example.yourvelociraptorflowers.domain.Myplants;
 
 
 import android.view.LayoutInflater;
@@ -7,24 +7,24 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView.Adapter;
 
-import com.example.yourvelociraptorflowers.databinding.ItemMoiBinding;
+import com.example.yourvelociraptorflowers.databinding.ItemMyBinding;
 import com.example.yourvelociraptorflowers.model.plant.Plants;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class PlantsAdapterMoi extends Adapter<PlantsViewHolderMoi> {
+public class PlantsAdapterMy extends Adapter<PlantsViewHolderMy> {
     private List<Plants> plants = new ArrayList<>();
     @NonNull
     @Override
-    public PlantsViewHolderMoi onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public PlantsViewHolderMy onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-        ItemMoiBinding binding = ItemMoiBinding.inflate(inflater, parent, false);
-        return new PlantsViewHolderMoi(binding);
+        ItemMyBinding binding = ItemMyBinding.inflate(inflater, parent, false);
+        return new PlantsViewHolderMy(binding);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull PlantsViewHolderMoi holder, int position) {
+    public void onBindViewHolder(@NonNull PlantsViewHolderMy holder, int position) {
         holder.bind(plants.get(position));
     }
     @Override

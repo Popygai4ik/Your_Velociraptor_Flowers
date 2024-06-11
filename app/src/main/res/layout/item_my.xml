@@ -12,6 +12,19 @@
         android:layout_height="wrap_content"
         android:padding="16dp">
 
+        <ImageButton
+            android:id="@+id/questionButton"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="?android:attr/selectableItemBackground"
+            android:padding="12dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/icon_question_mark_8426914"
+
+            app:layout_constraintEnd_toStartOf="@+id/delitButton"
+            app:layout_constraintStart_toEndOf="@+id/moreButton"
+            app:layout_constraintTop_toTopOf="@+id/moreButton" />
+
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/avatarCard"
             android:layout_width="100dp"

@@ -16,7 +16,7 @@ import android.widget.Toast;
 
 import com.example.yourvelociraptorflowers.R;
 import com.example.yourvelociraptorflowers.databinding.FragmentMoiTvitiBinding;
-import com.example.yourvelociraptorflowers.domain.Moiplants.PlantsAdapterMoi;
+import com.example.yourvelociraptorflowers.domain.Myplants.PlantsAdapterMy;
 import com.example.yourvelociraptorflowers.model.plant.Plants;
 import com.example.yourvelociraptorflowers.ui.notifications.NotificationsActivity;
 import com.example.yourvelociraptorflowers.ui.plants.search.Search_activity;
@@ -34,8 +34,8 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
-public class Moi_tviti_Fragment extends Fragment {
-    private PlantsAdapterMoi adapter;
+public class My_Flowers_Fragment extends Fragment {
+    private PlantsAdapterMy adapter;
     private FragmentMoiTvitiBinding binding;
 
     @Override
@@ -94,7 +94,7 @@ public class Moi_tviti_Fragment extends Fragment {
             binding.registerButton.setVisibility(View.GONE);
 
             FirebaseFirestore firestore = FirebaseFirestore.getInstance();
-            adapter = new PlantsAdapterMoi();
+            adapter = new PlantsAdapterMy();
             binding.recycler.setLayoutManager(new LinearLayoutManager(requireContext()));
             binding.recycler.setAdapter(adapter);
 
@@ -124,27 +124,27 @@ public class Moi_tviti_Fragment extends Fragment {
                                                 long lastWateredTimestamp = (long) moisFlower.get("lastWatered");
                                                 String lastWateredFormatted = sdf.format(new Date(lastWateredTimestamp));
                                                 plant.setLastWateredFormatted(lastWateredFormatted);
-                                                ArrayList<Long> nextWateringDates = (ArrayList<Long>) moisFlower.get("nextWateringDates");
-
-                                                // Массив для хранения строковых представлений дат
-                                                ArrayList<String> formattedDates = new ArrayList<>();
-
-                                                // Формат для преобразования даты в строку
-
-                                                for (Long dateInt : nextWateringDates) {
-
-                                                    Date date = new Date(dateInt); // умножаем на 1000 для преобразования в миллисекунды
-                                                    // Форматируем дату и добавляем в массив
-                                                    formattedDates.add(sdf.format(date));
-                                                }
-
-                                                // Пример вывода результатов
-                                                for (String formattedDate : formattedDates) {
-                                                    System.out.println(formattedDate);
-                                                }
-
-                                                // Теперь можно использовать массив строк для других нужд
-                                                plant.setLastWatered(formattedDates);
+//                                                ArrayList<Long> nextWateringDates = (ArrayList<Long>) moisFlower.get("nextWateringDates");
+//
+//                                                // Массив для хранения строковых представлений дат
+//                                                ArrayList<String> formattedDates = new ArrayList<>();
+//
+//                                                // Формат для преобразования даты в строку
+//
+//                                                for (Long dateInt : nextWateringDates) {
+//
+//                                                    Date date = new Date(dateInt); // умножаем на 1000 для преобразования в миллисекунды
+//                                                    // Форматируем дату и добавляем в массив
+//                                                    formattedDates.add(sdf.format(date));
+//                                                }
+//
+//                                                // Пример вывода результатов
+//                                                for (String formattedDate : formattedDates) {
+//                                                    System.out.println(formattedDate);
+//                                                }
+//
+//                                                // Теперь можно использовать массив строк для других нужд
+//                                                plant.setLastWatered(formattedDates);
                                                 plants.add(plant);
                                             }
                                         }

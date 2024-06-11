@@ -65,17 +65,11 @@
         <activity android:name=".ui.weather.ChangeConsentActivity" android:label="ChangeConsentActivity"/>
         <activity android:name=".ui.user.name.ResetNameActivity" android:label="ResetNameActivity"/>
         <activity android:name=".ui.user.email.ChangeEmailActivity" android:label="ChangeEmailActivity"/>
+        <activity android:name=".ui.user.statistics.AccountStatsActivity" android:label="AccountStatsActivity"/>
+        <activity android:name=".ui.user.deleteaccount.DeleteAccountActivity" android:label="DeleteAccountActivity"/>
+        <activity android:name=".ui.plants.question.Activity_Question_For_Expert" android:label="Activity_Question_For_Expert"/>
 
-        <receiver android:name=".domain.receiver.PolivAlarmReceiver" />
-        <receiver
-            android:name=".domain.notification.alarmnotification.MyReceiver"
-            android:enabled="true"
-            android:exported="false" >
-        </receiver>
-        <service
-            android:name=".domain.notification.alarmnotification.MyNewIntentService"
-            android:exported="false" >
-        </service>
+
 
     </application>
 

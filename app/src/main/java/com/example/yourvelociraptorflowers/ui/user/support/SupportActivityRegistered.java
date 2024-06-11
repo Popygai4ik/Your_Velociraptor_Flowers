@@ -5,7 +5,7 @@ import android.os.Bundle;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.yourvelociraptorflowers.databinding.SupportActivitiZareganBinding;
+import com.example.yourvelociraptorflowers.databinding.SupportActivitiRegisteredBinding;
 import com.example.yourvelociraptorflowers.ui.MainActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -15,12 +15,12 @@ import java.util.Map;
 
 public class SupportActivityRegistered extends AppCompatActivity {
 
-    private SupportActivitiZareganBinding binding;
+    private SupportActivitiRegisteredBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = SupportActivitiZareganBinding.inflate(getLayoutInflater());
+        binding = SupportActivitiRegisteredBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         binding.backButton.setOnClickListener(v -> {
             onBackPressed();

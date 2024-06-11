@@ -11,8 +11,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.bumptech.glide.Glide;
 import com.example.yourvelociraptorflowers.R;
 import com.example.yourvelociraptorflowers.databinding.ActivityProvileBinding;
-import com.example.yourvelociraptorflowers.ui.fragment.Vse_tviti_Fragment;
 import com.example.yourvelociraptorflowers.ui.plants.addnewplants.adminadd.Add_new_plant;
+import com.example.yourvelociraptorflowers.ui.user.statistics.AccountStatsActivity;
+import com.example.yourvelociraptorflowers.ui.user.deleteaccount.DeleteAccountActivity;
 import com.example.yourvelociraptorflowers.ui.user.email.ChangeEmailActivity;
 import com.example.yourvelociraptorflowers.ui.user.location.ResetLocationActivity;
 import com.example.yourvelociraptorflowers.ui.user.login.Login_activity;
@@ -54,6 +55,8 @@ public class User_profile extends AppCompatActivity {
 
         FirebaseUser currentUser = mAuth.getCurrentUser();
         if (currentUser != null) {
+            binding.deleteButton.setVisibility(View.VISIBLE);
+            binding.AccountStatsButton.setVisibility(View.VISIBLE);
             binding.ResetNameButton.setVisibility(View.VISIBLE);
             binding.ResetLocationButton.setVisibility(View.VISIBLE);
             binding.ResetEmailButton.setVisibility(View.VISIBLE);
@@ -72,10 +75,19 @@ public class User_profile extends AppCompatActivity {
                             if (document.exists()) {
                                 String userName = document.getString("name");
                                 if (userName != null) {
+
                                     binding.profileName.setVisibility(View.VISIBLE);
                                     binding.profileName.setText(userName);
                                     binding.profileCity.setVisibility(View.VISIBLE);
                                     binding.profileCity.setText(document.getString("city"));
+                                    binding.AccountStatsButton.setOnClickListener(v -> {
+                                        Intent intent = new Intent(this, AccountStatsActivity.class);
+                                        startActivity(intent);
+                                    });
+                                    binding.deleteButton.setOnClickListener(v -> {
+                                        Intent intent = new Intent(this, DeleteAccountActivity.class);
+                                        startActivity(intent);
+                                    });
                                     binding.ResetLocationButton.setOnClickListener(v -> {
                                         Intent intent = new Intent(this, ResetLocationActivity.class);
                                         intent.putExtra("city", binding.profileCity.getText().toString());
@@ -89,7 +101,7 @@ public class User_profile extends AppCompatActivity {
 
                                     binding.ResetEmailButton.setOnClickListener(v -> {
                                         Intent intent = new Intent(this, ChangeEmailActivity.class);
-                                        intent.putExtra("email", document.getString("email"));
+//                                        intent.putExtra("email", document.getString("email"));
                                         startActivity(intent);
                                     });
 
@@ -157,6 +169,9 @@ public class User_profile extends AppCompatActivity {
             });
 
         } else {
+            binding.deleteButton.setVisibility(View.INVISIBLE);
+
+            binding.AccountStatsButton.setVisibility(View.INVISIBLE);
             binding.support.setOnClickListener(v -> {
                 Intent intent = new Intent(this, SupportActivityNotRegistered.class);
                 startActivity(intent);

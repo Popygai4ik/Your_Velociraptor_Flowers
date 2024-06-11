@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    android:padding="16dp">
+
+    <ImageButton
+        android:id="@+id/backButton"
+        android:layout_width="49dp"
+        android:layout_height="50dp"
+        android:background="?android:attr/selectableItemBackground"
+        android:padding="12dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/free_icon_back_arrow_594564"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- Заголовок -->
+    <TextView
+        android:id="@+id/profileTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="12dp"
+        android:text="Твой профиль"
+        android:textSize="24sp"
+        android:textStyle="bold"
+
+        app:layout_constraintBottom_toTopOf="@id/avatarCard"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <!-- Фотография пользователя -->
+
+
+    <!--    <ImageView-->
+    <!--        android:id="@+id/profileImage"-->
+    <!--        android:layout_width="150dp"-->
+    <!--        android:layout_height="150dp"-->
+    <!--        android:layout_marginTop="16dp"-->
+    <!--        android:scaleType="centerCrop"-->
+    <!--        app:layout_constraintEnd_toEndOf="parent"-->
+    <!--        app:layout_constraintStart_toStartOf="parent"-->
+    <!--        app:layout_constraintTop_toBottomOf="@id/profileTitle" />-->
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/avatarCard"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        app:cardCornerRadius="10dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/profileTitle">
+
+        <ImageView
+            android:id="@+id/profileImage"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/statistics_4149628"
+            />
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <!-- Имя пользователя -->
+    <TextView
+        android:id="@+id/profileName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Имя пользователя"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/avatarCard" />
+
+    <!-- Email пользователя -->
+
+    <TextView
+        android:id="@+id/profileEmail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="example@example.com"
+        android:textSize="16sp"
+        android:textStyle="italic"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/profileName" />
+    <TextView
+        android:id="@+id/profileCity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Город Москва"
+        android:textSize="16sp"
+        android:textStyle="italic"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/profileEmail" />
+    <TextView
+        android:id="@+id/profileData_creation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="📅 01.01.0001 📅"
+        android:textSize="16sp"
+        android:textStyle="italic"
+
+        android:layout_marginTop="6dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/profileCity" />
+    <TextView
+        android:id="@+id/profileSubscriptionNotification"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="🌞 Cогласие на уведомления о погоде 🌞"
+        android:textSize="16sp"
+        android:textStyle="italic"
+        android:layout_marginTop="6dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/profileData_creation" />
+    <TextView
+        android:id="@+id/profileFlowersCount"
+
+        android:layout_marginTop="6dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Сейчас у вас 0 растений 🌼"
+        android:textSize="16sp"
+        android:textStyle="italic"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/profileSubscriptionNotification" />
+    <TextView
+        android:id="@+id/profileNotificationsCount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="✉ Сейчас у вас 0 уведомлений ✉"
+        android:textSize="16sp"
+        android:textStyle="italic"
+        android:layout_marginTop="6dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/profileFlowersCount" />
+
+    <Button
+        android:id="@+id/flowersButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Посмотреть мои растения"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/profileNotificationsCount"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"/>
+
+    <Button
+        android:id="@+id/notification_Button"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Посмотреть уведомления"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/flowersButton"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"/>
+
+    <Button
+        android:id="@+id/logoutButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Выйти из аккаунта"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/notification_Button"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"/>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

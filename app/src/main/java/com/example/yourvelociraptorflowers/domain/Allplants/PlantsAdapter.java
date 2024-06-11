@@ -6,7 +6,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView.Adapter;
 
-import com.example.yourvelociraptorflowers.databinding.ItemVseBinding;
+import com.example.yourvelociraptorflowers.databinding.ItemAllBinding;
 import com.example.yourvelociraptorflowers.model.plant.Plants;
 
 import java.util.ArrayList;
@@ -22,7 +22,7 @@ public class PlantsAdapter extends Adapter<PlantsViewHolder> {
     @Override
     public PlantsViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-        ItemVseBinding binding = ItemVseBinding.inflate(inflater, parent, false);
+        ItemAllBinding binding = ItemAllBinding.inflate(inflater, parent, false);
         return new PlantsViewHolder(binding);
     }
 

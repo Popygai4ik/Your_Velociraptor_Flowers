@@ -181,6 +181,28 @@
         android:layout_marginTop="16dp"
         android:layout_marginBottom="16dp"/>
     <Button
+        android:id="@+id/AccountStatsButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Статистика аккаунта"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ResetLocationButton"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"/>
+    <Button
+        android:id="@+id/deleteButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Удалить аккаунт"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/AccountStatsButton"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"/>
+    <Button
         android:id="@+id/addButton"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -188,7 +210,7 @@
 
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/ResetLocationButton"
+        app:layout_constraintTop_toBottomOf="@id/deleteButton"
         android:layout_marginTop="16dp"
         android:layout_marginBottom="16dp"/>
     <Button
@@ -206,9 +228,6 @@
         android:id="@+id/ine"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:text="example@example.com"
-        android:textSize="16sp"
-        android:textStyle="italic"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ne"

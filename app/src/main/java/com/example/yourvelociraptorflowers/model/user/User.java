@@ -14,14 +14,16 @@ public class User {
 
     public ArrayList<String> moisFlowers;
     public ArrayList<String> notifications;
+    public String creation_date;
     String city;
     public User() {
 
     }
 
-    public User(String userId, String uid, String name, String email, String password, Boolean vozrst, ArrayList<String> moisFlowers, ArrayList<String> notifications, String city) {
+    public User(String userId, String uid, String name, String email, String password, Boolean vozrst, ArrayList<String> moisFlowers, ArrayList<String> notifications, String city, String creation_date) {
         this.vozrst = vozrst;
         this.userId = userId;
+        this.creation_date = creation_date;
         this.uid = uid;
         this.name = name;
         this.email = email;
@@ -44,6 +46,14 @@ public class User {
 
     public void setUid(String uid) {
         this.uid = uid;
+    }
+
+    public String getCreation_date() {
+        return creation_date;
+    }
+
+    public void setCreation_date(String creation_date) {
+        this.creation_date = creation_date;
     }
 
     public String getName() {

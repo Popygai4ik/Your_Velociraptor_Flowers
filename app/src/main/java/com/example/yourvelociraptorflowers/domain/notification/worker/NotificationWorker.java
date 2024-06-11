@@ -1,5 +1,5 @@
 package com.example.yourvelociraptorflowers.domain.notification.worker;
-import static com.example.yourvelociraptorflowers.domain.Moiplants.PlantsViewHolderMoi.getNextWateringDate;
+import static com.example.yourvelociraptorflowers.domain.Myplants.PlantsViewHolderMy.getNextWateringDate;
 
 import android.app.Notification;
 import android.app.NotificationChannel;
@@ -395,7 +395,7 @@ public class NotificationWorker extends Worker {
             date = originalFormat.parse(dateStr);
         } catch (ParseException e) {
             e.printStackTrace();
-            return dateStr; // Возвращаем исходную строку в случае ошибки
+            return dateStr;
         }
         return targetFormat.format(date);
     }

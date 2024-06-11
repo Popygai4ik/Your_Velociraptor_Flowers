@@ -15,7 +15,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.bumptech.glide.Glide;
 import com.example.yourvelociraptorflowers.R;
-import com.example.yourvelociraptorflowers.databinding.OpisanieActivityBinding;
+import com.example.yourvelociraptorflowers.databinding.MoreInformationAboutPlantActivityBinding;
+
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -29,13 +30,13 @@ import java.util.Map;
 public class MoreDetailedActivity extends AppCompatActivity {
 
     private TextView opisanieTextView;
-    private OpisanieActivityBinding binding;
+    private MoreInformationAboutPlantActivityBinding binding;
     private TextView nameTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = OpisanieActivityBinding.inflate(getLayoutInflater());
+        binding = MoreInformationAboutPlantActivityBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         binding.backButton.setOnClickListener(v -> {
             onBackPressed();

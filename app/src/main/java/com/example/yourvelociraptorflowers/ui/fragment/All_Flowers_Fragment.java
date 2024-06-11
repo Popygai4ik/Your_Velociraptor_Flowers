@@ -29,7 +29,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-public class Vse_tviti_Fragment extends Fragment {
+public class All_Flowers_Fragment extends Fragment {
     private FragmentVseTvitiBinding binding;
     private PlantsAdapter adapter;
 
